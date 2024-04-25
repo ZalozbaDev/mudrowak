@@ -112,16 +112,3 @@ services:
             - jigasi
         networks:
             meet.jitsi:
-
-
-    # VOSK / Kaldi container
-    vosk-cz:
-        # when using German recognition
-        image: alphacep/kaldi-cz:latest
-        restart: ${RESTART_POLICY:-unless-stopped}
- #       ports:
- #           - 2700:2700
-        depends_on:
-            - jigasi
-        networks:
-            meet.jitsi:

@@ -8,7 +8,9 @@ Nawod za instalaciju swójskeho systema za spóznawanje a simultany přełožk.
 
 as root:
 
+```bash
 mkdir -p /containers/jitsi-meet/inst_9220/.jitsi-meet-cfg/{web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+```
 
 ### Environment configuration
 
@@ -62,26 +64,30 @@ make quantize
 ./quantize ../ggml-model.bin ../ggml-model.q8_0.bin q8_0
 popd
 ```
+
 Copy the resulting quantized model to the place specified by the config key "MODEL_PATH_FULL" in ".env".
 
 ### Whisper container
 
+```bash
 git clone git@github.com:ZalozbaDev/docker_vosk
-
 cd docker_vosk
-
 docker build -f vosk_server_whisper/Dockerfile --progress=plain -t vosk_server_whisper .
+```
 
 ## Wužiwanje
 
+```bash
 docker-compose -f docker-compose.yml -f jibri.yml -f etherpad.yml -f jigasi.yml up -d
+```
 
 ### Update whisper container
 
+After rebuilding the whisper container, run this sequence:
+
+```bash
 docker-compose -f docker-compose.yml -f jibri.yml -f etherpad.yml -f jigasi.yml stop vosk-hsb-whisper
-
 docker-compose -f docker-compose.yml -f jibri.yml -f etherpad.yml -f jigasi.yml create vosk-hsb-whisper
-
 docker-compose -f docker-compose.yml -f jibri.yml -f etherpad.yml -f jigasi.yml start vosk-hsb-whisper
-
 docker-compose -f docker-compose.yml -f jibri.yml -f etherpad.yml -f jigasi.yml logs -f vosk-hsb-whisper
+```

@@ -71,8 +71,9 @@ Copy the resulting quantized model to the place specified by the config key "MOD
 
 ```bash
 git clone git@github.com:ZalozbaDev/docker_vosk
-cd docker_vosk
+pushd docker_vosk
 docker build -f vosk_server_whisper/Dockerfile --progress=plain -t vosk_server_whisper .
+popd
 ```
 
 ## Wužiwanje

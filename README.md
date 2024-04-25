@@ -69,6 +69,9 @@ Copy the resulting quantized model to the place specified by the config key "MOD
 
 ### Whisper container
 
+TBD currently this container only works with Ubuntu 22.04 LTS and CUDA enabled.
+Patches welcome to support other platforms & configs.
+
 ```bash
 git clone git@github.com:ZalozbaDev/docker_vosk
 pushd docker_vosk

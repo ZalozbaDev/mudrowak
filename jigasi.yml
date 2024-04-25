@@ -1,0 +1,127 @@
+version: '3.5'
+
+services:
+    # SIP gateway (audio)
+    jigasi:
+        image: zalozbadev/jitsi_jigasi:stable-9220-custom
+#        image: jitsi/jigasi:latest
+        restart: ${RESTART_POLICY:-unless-stopped}
+        ports:
+            - '${JIGASI_PORT_MIN:-20000}-${JIGASI_PORT_MAX:-20050}:${JIGASI_PORT_MIN:-20000}-${JIGASI_PORT_MAX:-20050}/udp'
+        volumes:
+            - ${CONFIG}/jigasi:/config:Z
+            - ${CONFIG}/transcripts:/tmp/transcripts:Z
+        environment:
+            - ENABLE_AUTH
+            - ENABLE_GCLOUD_TRANSCRIPTION
+            - ENABLE_VOSK_TRANSCRIPTION
+            - ENABLE_GUESTS
+            - XMPP_AUTH_DOMAIN
+            - XMPP_GUEST_DOMAIN
+            - XMPP_MUC_DOMAIN
+            - XMPP_INTERNAL_MUC_DOMAIN
+            - XMPP_SERVER
+            - XMPP_PORT
+            - XMPP_DOMAIN
+            - XMPP_HIDDEN_PARTICIPANT_DOMAIN
+            - PUBLIC_URL
+            - JIGASI_DISABLE_SIP
+            - JIGASI_SIP_URI
+            - JIGASI_SIP_PASSWORD
+            - JIGASI_SIP_SERVER
+            - JIGASI_SIP_PORT
+            - JIGASI_SIP_TRANSPORT
+            - JIGASI_SIP_DEFAULT_ROOM
+            - JIGASI_XMPP_USER
+            - JIGASI_XMPP_PASSWORD
+            - JIGASI_TRANSCRIBER_USER
+            - JIGASI_TRANSCRIBER_PASSWORD
+            - JIGASI_BREWERY_MUC
+            - JIGASI_PORT_MIN
+            - JIGASI_PORT_MAX
+            - JIGASI_HEALTH_CHECK_SIP_URI
+            - JIGASI_HEALTH_CHECK_INTERVAL
+            - JIGASI_SIP_KEEP_ALIVE_METHOD
+            - JIGASI_ENABLE_SDES_SRTP
+            - ENABLE_TRANSCRIPTIONS
+            - JIGASI_TRANSCRIBER_ADVERTISE_URL
+            - JIGASI_TRANSCRIBER_RECORD_AUDIO
+            - JIGASI_TRANSCRIBER_SEND_TXT
+            - GC_PROJECT_ID
+            - GC_PRIVATE_KEY_ID
+            - GC_PRIVATE_KEY
+            - GC_CLIENT_EMAIL
+            - GC_CLIENT_ID
+            - GC_CLIENT_CERT_URL
+            - SHUTDOWN_REST_ENABLED
+            - SENTRY_DSN="${JIGASI_SENTRY_DSN:-0}"
+            - SENTRY_ENVIRONMENT
+            - SENTRY_RELEASE
+            - TZ
+            - VOSK_SERVER
+            - ENABLE_CUSTOM_TRANSLATION
+            - CUSTOM_TRANSLATION_APIURL
+            - CUSTOM_TRANSLATION_APIKEY
+        depends_on:
+            - prosody
+        networks:
+            meet.jitsi:
+
+    # VOSK / Kaldi container
+    vosk-hsb-whisper:
+        # this image needs to be self-built!
+        image: vosk_server_whisper:latest
+        privileged: true
+        restart: ${RESTART_POLICY:-unless-stopped}
+        environment:
+            - VOSK_SAMPLE_RATE
+            - VOSK_LOG_AUDIO
+            - MODEL_PATH_FULL
+        volumes:
+            - ./logs:/logs
+            - ./whisper:/whisper
+#        ports:
+#            - 2700:2700
+        depends_on:
+            - jigasi
+        networks:
+            meet.jitsi:
+
+
+    # VOSK / Kaldi container
+    vosk-de:
+        # when using German recognition
+        image: alphacep/kaldi-de:latest
+        restart: ${RESTART_POLICY:-unless-stopped}
+#        ports:
+#            - 2700:2700
+        depends_on:
+            - jigasi
+        networks:
+            meet.jitsi:
+
+
+    # VOSK / Kaldi container
+    vosk-en:
+        # when using German recognition
+        image: alphacep/kaldi-en:latest
+        restart: ${RESTART_POLICY:-unless-stopped}
+ #       ports:
+ #           - 2700:2700
+        depends_on:
+            - jigasi
+        networks:
+            meet.jitsi:
+
+
+    # VOSK / Kaldi container
+    vosk-cz:
+        # when using German recognition
+        image: alphacep/kaldi-cz:latest
+        restart: ${RESTART_POLICY:-unless-stopped}
+ #       ports:
+ #           - 2700:2700
+        depends_on:
+            - jigasi
+        networks:
+            meet.jitsi:

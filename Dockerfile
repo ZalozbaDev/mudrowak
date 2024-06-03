@@ -8,6 +8,7 @@ RUN pip install torch numpy transformers
 COPY --from=quantize /app/models/convert-h5-to-ggml.py .
 COPY whisper ./whisper
 COPY hsb_stt_demo ./hsb_stt_demo
+COPY whisper-small/vocab.json whisper-small/added_tokens.json hsb_stt_demo/hsb_whisper/
 
 RUN python ./convert-h5-to-ggml.py ./hsb_stt_demo/hsb_whisper/ ./whisper .
 

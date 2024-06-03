@@ -34,35 +34,14 @@ Fetch all required repos:
 
 ```bash
 git lfs install
-git clone https://huggingface.co/spaces/Korla/hsb_stt_demo
-git clone git@github.com:ZalozbaDev/whisper.cpp
-git clone https://github.com/openai/whisper
-git clone https://huggingface.co/openai/whisper-small
+git submodule init
+git submodule update
 ```
 
-Install python modules:
-
+Convert and quantize model using docker:
 ```bash
-pip3 install torch
-pip3 install numpy
-pip3 install transformers
-```
-
-Convert model:
-
-```bash
-cp whisper-small/vocab.json hsb_stt_demo/hsb_whisper/
-cp whisper-small/added_tokens.json hsb_stt_demo/hsb_whisper/
-python3 ./whisper.cpp/models/convert-h5-to-ggml.py ./hsb_stt_demo/hsb_whisper/ ./whisper .
-```
-
-Quantize model:
-
-```bash
-pushd whisper.cpp
-make quantize
-./quantize ../ggml-model.bin ../ggml-model.q8_0.bin q8_0
-popd
+docker build -t quantized-whisper .
+docker run --rm --entrypoint /bin/sh quantized-whisper -c "cat /app/ggml-model.q8_0.bin" > ./ggml-model.q8_0.bin
 ```
 
 Copy the resulting quantized model to the place specified by the config key "MODEL_PATH_FULL" in ".env".

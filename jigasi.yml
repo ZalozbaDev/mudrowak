@@ -67,16 +67,15 @@ services:
         networks:
             meet.jitsi:
 
-    # VOSK / Kaldi container
+    # VOSK / Whisper container
     vosk-hsb-whisper:
-        # this image needs to be self-built!
-        image: vosk_server_whisper:latest
-        privileged: true
+        build:
+            context: .
+            dockerfile: docker_vosk/vosk_server_whisper/full-vosk-whisper-stack.Dockerfile
         restart: ${RESTART_POLICY:-unless-stopped}
         environment:
             - VOSK_SAMPLE_RATE
             - VOSK_LOG_AUDIO
-            - MODEL_PATH_FULL
         volumes:
             - ./logs:/logs
             - ./whisper:/whisper

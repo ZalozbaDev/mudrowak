@@ -1,0 +1,9 @@
+[submodule "hsb_stt_demo"]
+	path = hsb_stt_demo
+	url = https://huggingface.co/spaces/Korla/hsb_stt_demo
+[submodule "whisper-small"]
+	path = whisper-small
+	url = https://huggingface.co/openai/whisper-small
+[submodule "whisper"]
+	path = whisper
+	url = https://github.com/openai/whisper

@@ -38,3 +38,42 @@
 	
 ### build all containers
 
+```
+export JITSI_RELEASE=stable
+// adjust as required
+export CUSTOM_RELEASE=stable-9584-1_custom-2
+
+make build_base
+docker image tag jitsi/base:latest jitsi/base:$CUSTOM_RELEASE
+
+make build_base-java
+docker image tag jitsi/base-java:latest jitsi/base-java:$CUSTOM_RELEASE
+
+make build_jibri
+docker image tag jitsi/jibri:latest jitsi/jibri:$CUSTOM_RELEASE
+
+make build_jicofo
+docker image tag jitsi/jicofo:latest jitsi/jicofo:$CUSTOM_RELEASE
+
+make build_jigasi
+docker image tag jitsi/jigasi:latest jitsi/jigasi:$CUSTOM_RELEASE
+
+make build_jvb
+docker image tag jitsi/jvb:latest jitsi/jvb:$CUSTOM_RELEASE
+
+make build_prosody
+docker image tag jitsi/prosody:latest jitsi/prosody:$CUSTOM_RELEASE
+
+make build_web
+docker image tag jitsi/web:latest jitsi/web:$CUSTOM_RELEASE
+
+// optional: push to docker hub
+docker login
+for i in base base-java jibri jicofo jigasi jvb prosody web ; do
+	echo $i
+	docker image tag jitsi/$i:$CUSTOM_RELEASE zalozbadev/jitsi_$i:$CUSTOM_RELEASE
+	docker push zalozbadev/jitsi_$i:$CUSTOM_RELEASE
+done
+
+```
+

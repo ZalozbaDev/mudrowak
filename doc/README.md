@@ -77,3 +77,6 @@ done
 
 ```
 
+### configure & run instance
+
+see [README.md](../README.md) in root folder.

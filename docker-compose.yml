@@ -2,9 +2,8 @@ version: '3.5'
 
 services:
     # Frontend
-    jitsi-9220-web:
-        image: zalozbadev/jitsi_web:stable-9220-custom
-#        image: jitsi/web:latest
+    jitsi-mudrowak-web:
+        image: zalozbadev/jitsi_web:${CUSTOM_RELEASE}
         restart: ${RESTART_POLICY:-unless-stopped}
         ports:
             - '${HTTP_PORT}:80'
@@ -26,6 +25,7 @@ services:
             - COLIBRI_WEBSOCKET_JVB_LOOKUP_NAME
             - COLIBRI_WEBSOCKET_REGEX
             - CONFCODE_URL
+            - CORS_HEADER_ACCESS_CONTROL_ALLOW_ORIGIN
             - DEFAULT_LANGUAGE
             - DEPLOYMENTINFO_ENVIRONMENT
             - DEPLOYMENTINFO_ENVIRONMENT_TYPE
@@ -142,18 +142,26 @@ services:
             - VIDEOQUALITY_BITRATE_H264_LOW
             - VIDEOQUALITY_BITRATE_H264_STANDARD
             - VIDEOQUALITY_BITRATE_H264_HIGH
+            - VIDEOQUALITY_BITRATE_H264_FULL
+            - VIDEOQUALITY_BITRATE_H264_ULTRA
             - VIDEOQUALITY_BITRATE_H264_SS_HIGH
             - VIDEOQUALITY_BITRATE_VP8_LOW
             - VIDEOQUALITY_BITRATE_VP8_STANDARD
             - VIDEOQUALITY_BITRATE_VP8_HIGH
+            - VIDEOQUALITY_BITRATE_VP8_FULL
+            - VIDEOQUALITY_BITRATE_VP8_ULTRA
             - VIDEOQUALITY_BITRATE_VP8_SS_HIGH
             - VIDEOQUALITY_BITRATE_VP9_LOW
             - VIDEOQUALITY_BITRATE_VP9_STANDARD
             - VIDEOQUALITY_BITRATE_VP9_HIGH
+            - VIDEOQUALITY_BITRATE_VP9_FULL
+            - VIDEOQUALITY_BITRATE_VP9_ULTRA
             - VIDEOQUALITY_BITRATE_VP9_SS_HIGH
             - VIDEOQUALITY_BITRATE_AV1_LOW
             - VIDEOQUALITY_BITRATE_AV1_STANDARD
             - VIDEOQUALITY_BITRATE_AV1_HIGH
+            - VIDEOQUALITY_BITRATE_AV1_FULL
+            - VIDEOQUALITY_BITRATE_AV1_ULTRA
             - VIDEOQUALITY_BITRATE_AV1_SS_HIGH
             - VIDEOQUALITY_PREFERRED_CODEC
             - XMPP_AUTH_DOMAIN
@@ -161,17 +169,18 @@ services:
             - XMPP_DOMAIN
             - XMPP_GUEST_DOMAIN
             - XMPP_MUC_DOMAIN
-            - XMPP_HIDDEN_PARTICIPANT_DOMAIN
+            - XMPP_HIDDEN_DOMAIN
             - XMPP_PORT
-            - WHITEBOARD_ENABLED
             - WHITEBOARD_COLLAB_SERVER_PUBLIC_URL
+            - WHITEBOARD_COLLAB_SERVER_URL_BASE
         networks:
             meet.jitsi:
+        depends_on:
+            - jvb
 
     # XMPP server
     prosody:
-        image: zalozbadev/jitsi_prosody:stable-9220-custom
-#        image: jitsi/prosody:latest
+        image: zalozbadev/jitsi_prosody:${CUSTOM_RELEASE}
         restart: ${RESTART_POLICY:-unless-stopped}
         expose:
             - '${XMPP_PORT:-5222}'
@@ -193,6 +202,7 @@ services:
             - ENABLE_LOBBY
             - ENABLE_RECORDING
             - ENABLE_S2S
+            - ENABLE_TRANSCRIPTIONS
             - ENABLE_VISITORS
             - ENABLE_XMPP_WEBSOCKET
             - ENABLE_JAAS_COMPONENTS
@@ -213,8 +223,6 @@ services:
             - JICOFO_COMPONENT_SECRET
             - JIGASI_XMPP_USER
             - JIGASI_XMPP_PASSWORD
-            - JIGASI_TRANSCRIBER_USER
-            - JIGASI_TRANSCRIBER_PASSWORD
             - JVB_AUTH_USER
             - JVB_AUTH_PASSWORD
             - JWT_APP_ID
@@ -225,6 +233,7 @@ services:
             - JWT_ALLOW_EMPTY
             - JWT_AUTH_TYPE
             - JWT_ENABLE_DOMAIN_VERIFICATION
+            - JWT_SIGN_TYPE
             - JWT_TOKEN_AUTH_MODULE
             - MATRIX_UVS_URL
             - MATRIX_UVS_ISSUER
@@ -253,10 +262,13 @@ services:
             - PROSODY_RESERVATION_ENABLED
             - PROSODY_RESERVATION_REST_BASE_URL
             - PROSODY_ENABLE_RATE_LIMITS
+            - PROSODY_ENABLE_STANZA_COUNTS
             - PROSODY_ENABLE_S2S
+            - PROSODY_ENABLE_METRICS
             - PROSODY_GUEST_AUTH_TYPE
             - PROSODY_HTTP_PORT
             - PROSODY_LOG_CONFIG
+            - PROSODY_METRICS_ALLOWED_CIDR
             - PROSODY_MODE
             - PROSODY_RATE_LIMIT_LOGIN_RATE
             - PROSODY_RATE_LIMIT_SESSION_RATE
@@ -294,9 +306,10 @@ services:
             - XMPP_MUC_MODULES
             - XMPP_MUC_CONFIGURATION
             - XMPP_INTERNAL_MUC_MODULES
-            - XMPP_HIDDEN_PARTICIPANT_DOMAIN
+            - XMPP_HIDDEN_DOMAIN
             - XMPP_PORT
             - XMPP_SERVER_S2S_PORT
+            - XMPP_SPEAKERSTATS_MODULES
         networks:
             meet.jitsi:
                 aliases:
@@ -304,8 +317,7 @@ services:
 
     # Focus component
     jicofo:
-        image: zalozbadev/jitsi_jicofo:stable-9220-custom
-#        image: jitsi/jicofo:latest
+        image: zalozbadev/jitsi_jicofo:${CUSTOM_RELEASE}
         restart: ${RESTART_POLICY:-unless-stopped}
         ports:
             - '127.0.0.1:${JICOFO_REST_PORT:-8888}:8888'
@@ -354,6 +366,7 @@ services:
             - JIBRI_PENDING_TIMEOUT
             - JIGASI_BREWERY_MUC
             - JIGASI_SIP_URI
+            - JIGASI_TRUSTED_DOMAINS
             - JVB_BREWERY_MUC
             - JVB_XMPP_AUTH_DOMAIN
             - JVB_XMPP_INTERNAL_MUC_DOMAIN
@@ -375,7 +388,7 @@ services:
             - XMPP_AUTH_DOMAIN
             - XMPP_INTERNAL_MUC_DOMAIN
             - XMPP_MUC_DOMAIN
-            - XMPP_HIDDEN_PARTICIPANT_DOMAIN
+            - XMPP_HIDDEN_DOMAIN
             - XMPP_SERVER
             - XMPP_PORT
             - MAX_SSRCS_PER_USER
@@ -387,7 +400,7 @@ services:
 
     # Video bridge
     jvb:
-        image: zalozbadev/jitsi_jvb:stable-9220
+        image: zalozbadev/jitsi_jvb:${CUSTOM_RELEASE}
         restart: ${RESTART_POLICY:-unless-stopped}
         ports:
             - '${JVB_PORT:-10000}:${JVB_PORT:-10000}/udp'
@@ -408,12 +421,15 @@ services:
             - ENABLE_COLIBRI_WEBSOCKET
             - ENABLE_JVB_XMPP_SERVER
             - ENABLE_OCTO
+            - ENABLE_SCTP
             - JVB_ADVERTISE_IPS
             - JVB_ADVERTISE_PRIVATE_CANDIDATES
             - JVB_AUTH_USER
             - JVB_AUTH_PASSWORD
             - JVB_BREWERY_MUC
+            - JVB_CC_TRUST_BWE
             - JVB_DISABLE_STUN
+            - JVB_DISABLE_XMPP
             - JVB_INSTANCE_ID
             - JVB_PORT
             - JVB_MUC_NICKNAME
@@ -422,8 +438,11 @@ services:
             - JVB_OCTO_BIND_ADDRESS
             - JVB_OCTO_REGION
             - JVB_OCTO_RELAY_ID
+            - JVB_REQUIRE_VALID_ADDRESS
+            - JVB_USE_USRSCTP
             - JVB_WS_DOMAIN
             - JVB_WS_SERVER_ID
+            - JVB_WS_TLS
             - JVB_XMPP_AUTH_DOMAIN
             - JVB_XMPP_INTERNAL_MUC_DOMAIN
             - JVB_XMPP_PORT

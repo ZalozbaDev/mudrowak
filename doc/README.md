@@ -41,7 +41,7 @@
 ```
 export JITSI_RELEASE=stable
 // adjust as required
-export CUSTOM_RELEASE=stable-9584-1_custom-2
+export CUSTOM_RELEASE=stable-9584-1_custom-4
 
 make build_base
 docker image tag jitsi/base:latest jitsi/base:$CUSTOM_RELEASE

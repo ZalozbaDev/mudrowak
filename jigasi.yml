@@ -125,3 +125,25 @@ services:
             - jigasi
         networks:
             meet.jitsi:
+
+    # LibreTranslate container for testing with de/en translation
+    # Test with a cmdline like this (works only with exposed port):
+    # curl -X POST http://localhost:5000/translate -H "Content-Type: application/json" -d '{"q": "Dies ist ein Versuch, die LibreTranslate API direkt anzusprechen.", "source": "de", "target": "en"}'
+    libretranslate:
+        # this is the image from docker hub
+        image: libretranslate/libretranslate:v1.6.1
+        restart: ${RESTART_POLICY:-unless-stopped}
+        # disabled when using internal network only
+        #ports:
+        #  - "5000:5000"
+        healthcheck:
+            test: ['CMD-SHELL', './venv/bin/python scripts/healthcheck.py']     
+        environment:
+            - LT_UPDATE_MODELS=true
+            - LT_LOAD_ONLY=en,de
+        volumes:
+            # check docker log file for folder permision issues!
+            - ./libretranslate_models:/home/libretranslate/.local
+        networks:
+            meet.jitsi:
+

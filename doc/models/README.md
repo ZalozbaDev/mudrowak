@@ -26,3 +26,15 @@ https://huggingface.co/zalozbadev/whisper_small_v3_2024_10
 
 https://huggingface.co/DigitalLabs42/whisper-medium-hsb-v1
 
+# GGML conversion
+
+replace MODEL with "USERNAME/MODELNAME" 
+
+```code
+
+docker build --progress=plain -t convert_to_ggml .
+mkdir ~/cache
+mkdir ~/whisper_models/
+docker run -e MODEL="Korla/hsb_stt_demo" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
+
+```

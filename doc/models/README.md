@@ -30,6 +30,11 @@ https://huggingface.co/DigitalLabs42/whisper-medium-hsb-v1
 
 replace MODEL with "USERNAME/MODELNAME" 
 
+supported models:
+
+* Korla/hsb_stt_demo
+* Korla/whisper-large-hsb
+
 ```code
 
 docker build --progress=plain -t convert_to_ggml .

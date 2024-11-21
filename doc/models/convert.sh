@@ -21,6 +21,19 @@ case $MODEL in
 		python3 ./models/convert-h5-to-ggml.py /cache/Korla_hsb_stt_demo/hsb_whisper/ /cache/openai_whisper/ /output/Korla/hsb_stt_demo/
 		;;
 	
+	Korla/whisper-large-hsb)
+		if [ ! -e /cache/Korla_whisper_large_hsb ]; then
+			git clone https://huggingface.co/Korla/whisper-large-hsb /cache/Korla_whisper_large_hsb
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		
+		mkdir -p /output/Korla/whisper_large_hsb
+		cd whisper.cpp
+		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_hsb/ /cache/openai_whisper/ /output/Korla/whisper_large_hsb/
+		;;
+	
 	*)
 		echo "Model $MODEL unknown!"
 		;;

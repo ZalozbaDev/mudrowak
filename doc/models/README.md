@@ -36,12 +36,13 @@ supported models:
 * Korla/whisper-large-hsb
 * danielzoba/whisper_small_adapted_2024_06_03
 * DILHTWD/whisper-large-v3-hsb
+* zalozbadev/whisper_small_v3_2024_10
 
 non-working models:
 
 * Korla/whisper-large-v3-turbo-hsb
 * DILHTWD/whisper-large-v3-turbo-hsb
-
+* DigitalLabs42/whisper-medium-hsb-v1
 
 ```code
 

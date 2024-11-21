@@ -40,6 +40,7 @@ supported models:
 non-working models:
 
 * Korla/whisper-large-v3-turbo-hsb
+* DILHTWD/whisper-large-v3-turbo-hsb
 
 
 ```code

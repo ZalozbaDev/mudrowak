@@ -84,6 +84,25 @@ case $MODEL in
 		python3 ./models/convert-h5-to-ggml.py /cache/DILHTWD_whisper_large_v3_hsb/ /cache/openai_whisper/ /output/DILHTWD/whisper_large_v3_hsb/
 		;;
 		
+	DILHTWD/whisper-large-v3-turbo-hsb)
+		if [ ! -e /cache/DILHTWD_whisper_large_v3_turbo_hsb ]; then
+			git clone https://huggingface.co/DILHTWD/whisper-large-v3-turbo-hsb /cache/DILHTWD_whisper_large_v3_turbo_hsb
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		if [ ! -e /cache/openai_whisper_large_v3_turbo ]; then
+			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3-turbo      /cache/openai_whisper_large_v3_turbo
+		fi
+
+		cp /cache/openai_whisper_large_v3_turbo/vocab.json        /cache/DILHTWD_whisper_large_v3_turbo_hsb/
+		cp /cache/openai_whisper_large_v3_turbo/added_tokens.json /cache/DILHTWD_whisper_large_v3_turbo_hsb/
+		
+		mkdir -p /output/DILHTWD/whisper_large_v3_turbo_hsb
+		cd whisper.cpp
+		python3 ./models/convert-h5-to-ggml.py /cache/DILHTWD_whisper_large_v3_turbo_hsb/ /cache/openai_whisper/ /output/DILHTWD/whisper_large_v3_turbo_hsb/
+		;;
+	
 		
 		
 	*)

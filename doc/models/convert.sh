@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export WHISPER_V1_7_1=whisper.cpp_v1_7_1
+export WHISPER_V1_7_2=whisper.cpp_v1_7_2
+
 case $MODEL in
 	
 	Korla/hsb_stt_demo)
@@ -17,7 +20,7 @@ case $MODEL in
 		cp /cache/openai_whisper_small/added_tokens.json /cache/Korla_hsb_stt_demo/hsb_whisper/
 		
 		mkdir -p /output/Korla/hsb_stt_demo
-		cd whisper.cpp
+		cd $WHISPER_V1_7_1
 		python3 ./models/convert-h5-to-ggml.py /cache/Korla_hsb_stt_demo/hsb_whisper/ /cache/openai_whisper/ /output/Korla/hsb_stt_demo/
 		;;
 	
@@ -30,7 +33,7 @@ case $MODEL in
 		fi
 		
 		mkdir -p /output/Korla/whisper_large_hsb
-		cd whisper.cpp
+		cd $WHISPER_V1_7_1
 		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_hsb/ /cache/openai_whisper/ /output/Korla/whisper_large_hsb/
 		;;
 	
@@ -49,7 +52,7 @@ case $MODEL in
 		cp /cache/openai_whisper_large_v3_turbo/added_tokens.json /cache/Korla_whisper_large_v3_turbo_hsb/
 		
 		mkdir -p /output/Korla/whisper_large_v3_turbo_hsb
-		cd whisper.cpp
+		cd $WHISPER_V1_7_2
 		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_v3_turbo_hsb/ /cache/openai_whisper/ /output/Korla/whisper_large_v3_turbo_hsb/
 		;;
 	
@@ -67,7 +70,7 @@ case $MODEL in
 		cp /cache/danielzoba_whisper_small_adapted_2024_06_03/0015_even_more_2024_recordings_0001/added_tokens.json /cache/danielzoba_whisper_small_adapted_2024_06_03/0015_even_more_2024_recordings_0001/checkpoint-3800/
 		
 		mkdir -p /output/danielzoba/whisper_small_adapted_2024_06_03
-		cd whisper.cpp
+		cd $WHISPER_V1_7_1
 		python3 ./models/convert-h5-to-ggml.py /cache/danielzoba_whisper_small_adapted_2024_06_03/0015_even_more_2024_recordings_0001/checkpoint-3800/ /cache/openai_whisper/ /output/danielzoba/whisper_small_adapted_2024_06_03
 		;;
 
@@ -80,7 +83,7 @@ case $MODEL in
 		fi
 		
 		mkdir -p /output/DILHTWD/whisper_large_v3_hsb
-		cd whisper.cpp
+		cd $WHISPER_V1_7_1
 		python3 ./models/convert-h5-to-ggml.py /cache/DILHTWD_whisper_large_v3_hsb/ /cache/openai_whisper/ /output/DILHTWD/whisper_large_v3_hsb/
 		;;
 		
@@ -99,7 +102,7 @@ case $MODEL in
 		cp /cache/openai_whisper_large_v3_turbo/added_tokens.json /cache/DILHTWD_whisper_large_v3_turbo_hsb/
 		
 		mkdir -p /output/DILHTWD/whisper_large_v3_turbo_hsb
-		cd whisper.cpp
+		cd $WHISPER_V1_7_2
 		python3 ./models/convert-h5-to-ggml.py /cache/DILHTWD_whisper_large_v3_turbo_hsb/ /cache/openai_whisper/ /output/DILHTWD/whisper_large_v3_turbo_hsb/
 		;;
 	
@@ -112,7 +115,7 @@ case $MODEL in
 		fi
 		
 		mkdir -p /output/zalozbadev/whisper_small_v3_2024_10
-		cd whisper.cpp
+		cd $WHISPER_V1_7_1
 		python3 ./models/convert-h5-to-ggml.py /cache/zalozbadev_whisper_small_v3_2024_10/ /cache/openai_whisper/ /output/zalozbadev/whisper_small_v3_2024_10/
 		;;
 		
@@ -131,7 +134,7 @@ case $MODEL in
 		cp /cache/openai_whisper_medium/added_tokens.json /cache/DigitalLabs42_whisper_medium_hsb_v1/
 		
 		mkdir -p /output/DigitalLabs42/whisper_medium_hsb_v1
-		cd whisper.cpp
+		cd $WHISPER_V1_7_2
 		python3 ./models/convert-h5-to-ggml.py /cache/DigitalLabs42_whisper_medium_hsb_v1/ /cache/openai_whisper/ /output/DigitalLabs42/whisper_medium_hsb_v1/
 		;;
 	

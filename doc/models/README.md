@@ -28,12 +28,13 @@ https://huggingface.co/DigitalLabs42/whisper-medium-hsb-v1
 
 # GGML conversion
 
-replace MODEL with "USERNAME/MODELNAME" 
+replace MODEL variable with "USERNAME/MODELNAME" 
 
 supported models:
 
 * Korla/hsb_stt_demo
 * Korla/whisper-large-hsb
+* danielzoba/whisper_small_adapted_2024_06_03
 
 ```code
 

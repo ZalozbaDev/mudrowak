@@ -34,6 +34,21 @@ case $MODEL in
 		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_hsb/ /cache/openai_whisper/ /output/Korla/whisper_large_hsb/
 		;;
 	
+	danielzoba/whisper_small_adapted_2024_06_03)
+		if [ ! -e /cache/danielzoba_whisper_small_adapted_2024_06_03 ]; then
+			git clone https://huggingface.co/danielzoba/whisper_small_adapted_2024_06_03 /cache/danielzoba_whisper_small_adapted_2024_06_03
+		fi
+
+		# TODO is this really the best snapshot?
+		
+		cp /cache/danielzoba_whisper_small_adapted_2024_06_03/0015_even_more_2024_recordings_0001/vocab.json        /cache/danielzoba_whisper_small_adapted_2024_06_03/0015_even_more_2024_recordings_0001/checkpoint-3800/
+		cp /cache/danielzoba_whisper_small_adapted_2024_06_03/0015_even_more_2024_recordings_0001/added_tokens.json /cache/danielzoba_whisper_small_adapted_2024_06_03/0015_even_more_2024_recordings_0001/checkpoint-3800/
+		
+		mkdir -p /output/danielzoba/whisper_small_adapted_2024_06_03
+		cd whisper.cpp
+		python3 ./models/convert-h5-to-ggml.py /cache/danielzoba_whisper_small_adapted_2024_06_03/0015_even_more_2024_recordings_0001/checkpoint-3800/ /cache/openai_whisper/ /output/danielzoba/whisper_small_adapted_2024_06_03
+		;;
+		
 	*)
 		echo "Model $MODEL unknown!"
 		;;

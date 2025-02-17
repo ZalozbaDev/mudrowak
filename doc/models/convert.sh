@@ -52,8 +52,10 @@ case $MODEL in
 		cp /cache/openai_whisper_large_v3_turbo/added_tokens.json /cache/Korla_whisper_large_v3_turbo_hsb/
 		
 		# not necessary for this python script, but required when creating ct2 model
-		cp /cache/openai_whisper_large_v3_turbo/merges.txt /cache/Korla_whisper_large_v3_turbo_hsb/
-
+		cp /cache/openai_whisper_large_v3_turbo/merges.txt               /cache/Korla_whisper_large_v3_turbo_hsb/
+		cp /cache/openai_whisper_large_v3_turbo/tokenizer.json           /cache/Korla_whisper_large_v3_turbo_hsb/
+		cp /cache/openai_whisper_large_v3_turbo/preprocessor_config.json /cache/Korla_whisper_large_v3_turbo_hsb/
+		
 		mkdir -p /output/Korla/whisper_large_v3_turbo_hsb
 		cd $WHISPER_V1_7_2
 		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_v3_turbo_hsb/ /cache/openai_whisper/ /output/Korla/whisper_large_v3_turbo_hsb/

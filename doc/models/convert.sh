@@ -151,8 +151,11 @@ case $MODEL in
 		cp /cache/openai_whisper_medium/added_tokens.json /cache/DigitalLabs42_whisper_medium_hsb_v1/
 		
 		mkdir -p /output/DigitalLabs42/whisper_medium_hsb_v1
-		cd $WHISPER_V1_7_4
-		python3 ./models/convert-h5-to-ggml.py /cache/DigitalLabs42_whisper_medium_hsb_v1/ /cache/openai_whisper/ /output/DigitalLabs42/whisper_medium_hsb_v1/
+		rm -rf $WHISPER_V1_7_4.safetensors
+		cp -r $WHISPER_V1_7_4 $WHISPER_V1_7_4.safetensors
+		cp convert-safetensors-to-ggml.py $WHISPER_V1_7_4.safetensors/models/
+		cd $WHISPER_V1_7_4.safetensors
+		python3 ./models/convert-safetensors-to-ggml.py /cache/DigitalLabs42_whisper_medium_hsb_v1/ /cache/openai_whisper/ /output/DigitalLabs42/whisper_medium_hsb_v1/
 		;;
 		
 	DigitalLabs42/whisper-large-hsb-v1)

@@ -41,11 +41,12 @@ supported models:
 * zalozbadev/whisper_small_v3_2024_10
 * Korla/whisper-large-v3-turbo-hsb
 * DILHTWD/whisper-large-v3-turbo-hsb
+* DigitalLabs42/whisper-medium-hsb-v1
 * DigitalLabs42/whisper-large-hsb-v1
 
 non-working models:
 
-* DigitalLabs42/whisper-medium-hsb-v1
+* none
 
 ```code
 

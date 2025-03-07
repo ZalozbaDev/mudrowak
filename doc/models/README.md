@@ -26,6 +26,8 @@ https://huggingface.co/zalozbadev/whisper_small_v3_2024_10
 
 https://huggingface.co/DigitalLabs42/whisper-medium-hsb-v1
 
+https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1
+
 # GGML conversion
 
 replace MODEL variable with "USERNAME/MODELNAME" 

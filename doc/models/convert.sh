@@ -2,7 +2,11 @@
 
 export WHISPER_V1_7_1=whisper.cpp_v1_7_1
 export WHISPER_V1_7_2=whisper.cpp_v1_7_2
+export WHISPER_V1_7_4=whisper.cpp_v1_7_4
 
+# could be that some conversions depend on OpenAI releases?
+export OPENAI_WHISPER_TAG_LATEST=v20240930
+ 
 case $MODEL in
 	
 	Korla/hsb_stt_demo)
@@ -12,6 +16,7 @@ case $MODEL in
 		if [ ! -e /cache/openai_whisper ]; then
 			git clone https://github.com/openai/whisper                /cache/openai_whisper
 		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
 		if [ ! -e /cache/openai_whisper_small ]; then
 			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-small      /cache/openai_whisper_small
 		fi
@@ -31,6 +36,7 @@ case $MODEL in
 		if [ ! -e /cache/openai_whisper ]; then
 			git clone https://github.com/openai/whisper                /cache/openai_whisper
 		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
 		
 		mkdir -p /output/Korla/whisper_large_hsb
 		cd $WHISPER_V1_7_1
@@ -44,6 +50,7 @@ case $MODEL in
 		if [ ! -e /cache/openai_whisper ]; then
 			git clone https://github.com/openai/whisper                /cache/openai_whisper
 		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
 		if [ ! -e /cache/openai_whisper_large_v3_turbo ]; then
 			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3-turbo      /cache/openai_whisper_large_v3_turbo
 		fi
@@ -68,6 +75,7 @@ case $MODEL in
 		if [ ! -e /cache/openai_whisper ]; then
 			git clone https://github.com/openai/whisper                /cache/openai_whisper
 		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
 
 		# TODO is this really the best snapshot?
 		
@@ -86,6 +94,7 @@ case $MODEL in
 		if [ ! -e /cache/openai_whisper ]; then
 			git clone https://github.com/openai/whisper                /cache/openai_whisper
 		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
 		
 		mkdir -p /output/DILHTWD/whisper_large_v3_hsb
 		cd $WHISPER_V1_7_1
@@ -99,6 +108,7 @@ case $MODEL in
 		if [ ! -e /cache/openai_whisper ]; then
 			git clone https://github.com/openai/whisper                /cache/openai_whisper
 		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
 		if [ ! -e /cache/openai_whisper_large_v3_turbo ]; then
 			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3-turbo      /cache/openai_whisper_large_v3_turbo
 		fi
@@ -118,6 +128,7 @@ case $MODEL in
 		if [ ! -e /cache/openai_whisper ]; then
 			git clone https://github.com/openai/whisper                /cache/openai_whisper
 		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
 		
 		mkdir -p /output/zalozbadev/whisper_small_v3_2024_10
 		cd $WHISPER_V1_7_1
@@ -131,6 +142,7 @@ case $MODEL in
 		if [ ! -e /cache/openai_whisper ]; then
 			git clone https://github.com/openai/whisper                /cache/openai_whisper
 		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
 		if [ ! -e /cache/openai_whisper_medium ]; then
 			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-medium      /cache/openai_whisper_medium
 		fi
@@ -139,11 +151,32 @@ case $MODEL in
 		cp /cache/openai_whisper_medium/added_tokens.json /cache/DigitalLabs42_whisper_medium_hsb_v1/
 		
 		mkdir -p /output/DigitalLabs42/whisper_medium_hsb_v1
-		cd $WHISPER_V1_7_2
+		cd $WHISPER_V1_7_4
 		python3 ./models/convert-h5-to-ggml.py /cache/DigitalLabs42_whisper_medium_hsb_v1/ /cache/openai_whisper/ /output/DigitalLabs42/whisper_medium_hsb_v1/
 		;;
-	
 		
+	DigitalLabs42/whisper-large-hsb-v1)
+		if [ ! -e /cache/DigitalLabs42_whisper-large-hsb-v1 ]; then
+			git clone https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1 /cache/DigitalLabs42_whisper_large_hsb_v1
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+		if [ ! -e /cache/openai_whisper_large ]; then
+			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large      /cache/openai_whisper_large
+		fi
+
+		cp /cache/openai_whisper_large/vocab.json        /cache/DigitalLabs42_whisper_large_hsb_v1/
+		cp /cache/openai_whisper_large/added_tokens.json /cache/DigitalLabs42_whisper_large_hsb_v1/
+		
+		mkdir -p /output/DigitalLabs42/whisper_large_hsb_v1
+		rm -rf $WHISPER_V1_7_4.safetensors
+		cp -r $WHISPER_V1_7_4 $WHISPER_V1_7_4.safetensors
+		cp convert-safetensors-to-ggml.py $WHISPER_V1_7_4.safetensors/models/
+		cd $WHISPER_V1_7_4.safetensors
+		python3 ./models/convert-safetensors-to-ggml.py /cache/DigitalLabs42_whisper_large_hsb_v1/ /cache/openai_whisper/ /output/DigitalLabs42/whisper_large_hsb_v1/
+		;;
 		
 	*)
 		echo "Model $MODEL unknown!"

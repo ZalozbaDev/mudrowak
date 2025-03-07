@@ -10,7 +10,11 @@ RUN git clone https://github.com/ggerganov/whisper.cpp /whisper.cpp_v1_7_1 && cd
 
 RUN git clone https://github.com/ggerganov/whisper.cpp /whisper.cpp_v1_7_2 && cd whisper.cpp_v1_7_2 && git checkout v1.7.2
 
+RUN git clone https://github.com/ggerganov/whisper.cpp /whisper.cpp_v1_7_4 && cd whisper.cpp_v1_7_4 && git checkout v1.7.4
+
 COPY convert.sh /
+
+COPY convert-safetensors-to-ggml.py /
 
 RUN chmod 755 convert.sh
 

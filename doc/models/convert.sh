@@ -163,12 +163,12 @@ case $MODEL in
 			git clone https://github.com/openai/whisper                /cache/openai_whisper
 		fi
 		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
-		if [ ! -e /cache/openai_whisper_large ]; then
-			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large      /cache/openai_whisper_large
+		if [ ! -e /cache/openai_whisper_large_v3 ]; then
+			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3      /cache/openai_whisper_large_v3
 		fi
 
-		cp /cache/openai_whisper_large/vocab.json        /cache/DigitalLabs42_whisper_large_hsb_v1/
-		cp /cache/openai_whisper_large/added_tokens.json /cache/DigitalLabs42_whisper_large_hsb_v1/
+		cp /cache/openai_whisper_large_v3/vocab.json        /cache/DigitalLabs42_whisper_large_hsb_v1/
+		cp /cache/openai_whisper_large_v3/added_tokens.json /cache/DigitalLabs42_whisper_large_hsb_v1/
 		
 		mkdir -p /output/DigitalLabs42/whisper_large_hsb_v1
 		rm -rf $WHISPER_V1_7_4.safetensors

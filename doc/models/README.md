@@ -46,6 +46,8 @@ supported models:
 
 non-working models:
 
+* Korla/Wav2Vec2BertForCTC-hsb
+
 * none
 
 ```code

@@ -180,6 +180,22 @@ case $MODEL in
 		cd $WHISPER_V1_7_4.safetensors
 		python3 ./models/convert-safetensors-to-ggml.py /cache/DigitalLabs42_whisper_large_hsb_v1/ /cache/openai_whisper/ /output/DigitalLabs42/whisper_large_hsb_v1/
 		;;
+
+	Korla/Wav2Vec2BertForCTC-hsb)
+		if [ ! -e /cache/Korla_Wav2Vec2BertForCTC-hsb ]; then
+			git clone https://huggingface.co/Korla/Wav2Vec2BertForCTC-hsb /cache/Korla_Wav2Vec2BertForCTC-hsb
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+		
+		mkdir -p /output/Korla/Wav2Vec2BertForCTC-hsb
+		
+		cd $WHISPER_V1_7_4
+		python3 ./models/convert-h5-to-ggml.py /cache/Korla_Wav2Vec2BertForCTC/ /cache/openai_whisper/ /output/Korla/Wav2Vec2BertForCTC-hsb/
+		;;
+		
 		
 	*)
 		echo "Model $MODEL unknown!"

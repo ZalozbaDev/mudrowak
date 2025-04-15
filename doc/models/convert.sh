@@ -197,6 +197,35 @@ case $MODEL in
 		;;
 		
 		
+	DigitalLabs42/whisper-large-hsb-v1-version2)
+		if [ ! -e /cache/DigitalLabs42_whisper-large-hsb-v1-version2 ]; then
+			git clone https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1 /cache/DigitalLabs42_whisper_large_hsb_v1_version2
+		fi
+		pushd /cache/DigitalLabs42_whisper_large_hsb_v1_version2
+		git checkout version2
+		if [ ! -e model.safetensors ]; then
+			ln -s model-01.safetensors model.safetensors
+		fi
+		popd
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+		if [ ! -e /cache/openai_whisper_large_v3 ]; then
+			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3      /cache/openai_whisper_large_v3
+		fi
+
+		cp /cache/openai_whisper_large_v3/vocab.json        /cache/DigitalLabs42_whisper_large_hsb_v1_version2/
+		cp /cache/openai_whisper_large_v3/added_tokens.json /cache/DigitalLabs42_whisper_large_hsb_v1_version2/
+		
+		mkdir -p /output/DigitalLabs42/whisper_large_hsb_v1_version2
+		rm -rf $WHISPER_V1_7_4.safetensors
+		cp -r $WHISPER_V1_7_4 $WHISPER_V1_7_4.safetensors
+		cp convert-safetensors-to-ggml.py $WHISPER_V1_7_4.safetensors/models/
+		cd $WHISPER_V1_7_4.safetensors
+		python3 ./models/convert-safetensors-to-ggml.py /cache/DigitalLabs42_whisper_large_hsb_v1_version2/ /cache/openai_whisper/ /output/DigitalLabs42/whisper_large_hsb_v1_version2/
+		;;
+
 	*)
 		echo "Model $MODEL unknown!"
 		;;

@@ -43,12 +43,11 @@ supported models:
 * DILHTWD/whisper-large-v3-turbo-hsb
 * DigitalLabs42/whisper-medium-hsb-v1
 * DigitalLabs42/whisper-large-hsb-v1
+* DigitalLabs42/whisper-large-hsb-v1-version2 (separate branch)
 
 non-working models:
 
 * Korla/Wav2Vec2BertForCTC-hsb
-
-* none
 
 ```code
 

@@ -14,14 +14,14 @@
 ## Ubuntu 24.04 instalować
 
 - eksistowacy Windows njedyrbi so nuznje wumazać, Ubuntu móžeće "pódla" instalować
-    - hasnće pak w tutym padźe prošu "Bitlocker" za dobu instalacije
+    - hasńće pak w tutym padźe prošu "Bitlocker" za dobu instalacije
 - slědujće nawodom tule: https://ubuntu.com/download/desktop 
 - wužiwajće USB-stick ze znajmjeńša 8GB za wutworjenje instalaciskeho systema
 - startujće ličak znowa (Windows dyrbi so "čiste" skónčić, nic jenož "Herunterfahren") a wuzwolće start z USB
 
 ## Ubuntu nastajić
 
-- přepruwować, zo je NVIDIA čěrjak instalowane:
+- přepruwować, zo je NVIDIA ćěrjak instalowane:
 
 - tak mjenowane "unattended updates" su poprawom dobra myslička, za naš zaměr pak mylace:
 
@@ -120,7 +120,7 @@ cp -r ../../../whisper_models/Korla whisper/
 docker-compose up -d
 ```
 
-- system přeco awtomatisce zabeži, hdyž so ličak zaswěći
+- system přeco awtomatisce zaběži, hdyž so ličak zaswěći
 
 - kontrola
 

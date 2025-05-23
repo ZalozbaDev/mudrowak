@@ -62,29 +62,51 @@ cat README.md
 atd
 ```
 
-- model do rjadowaka kopěrować
+- model pozdźišo do praweho rjadowaka kopěrować
 
 ## Jednotliwe containery twarić
 
 ### webcaptioner
 
 ```bash
+cd webcaptioner-ng
 git checkout ng_1.3.2
+cat README.md
+docker build -f docker/Dockerfile -t webcaptioner-ng .
+```
+
+```bash
+cd webcaptioner-ng-server
+git checkout ng_1.3.2
+cat README.md
+docker build -f docker/Dockerfile -t webcaptioner-ng-back .
 ```
 
 ### sotra
 
 ```bash
+cd modele
 git checkout 89242e4fee9a59290b5e79531cc10319b9933ee7
+cd sotra-lsf-ds/
+cat README.md
+docker build -t sotra-lsf .
+
+cd ..
+cd ctranslate-ol/
+cat README.md
+docker build -t ctranslator .
 ```
 
-- přidatne dataja kopěrować
+- přidatne dataja pozdźišo do praweho rjadowaka kopěrować
 
 ### vosk
 
 ```bash
-# TBD nowši???
-git checkout d817efd16d2d3e821567fa662f881f4f3ac2cadf
+cd docker_vosk
+git checkout 2dbfde5ceabbd698cc4b5d1495866468f7c7244e
+sudo apt install -f nvidia-cuda-toolkit
+./detect_whisper_options.sh
+docker build ...
 ```
 
 ## system startować
@@ -92,10 +114,12 @@ git checkout d817efd16d2d3e821567fa662f881f4f3ac2cadf
 ```bash
 cd mudrowak/doc/webcaptioner
 cp env.example .env
+cp -r ../../../modele/sotra-lsf-ds/Docker/models1 .
+cp ../../../modele/ctranslate-ol/version.txt .
 docker-compose up -d
 ```
 
-- system awtomatisce zabeži, hdyž so ličak zaswěći
+- system přeco awtomatisce zabeži, hdyž so ličak zaswěći
 
 - kontrola
 

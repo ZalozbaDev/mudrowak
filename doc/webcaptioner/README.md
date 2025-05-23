@@ -32,7 +32,7 @@ sudo apt remove --purge unattended-updates
 - trěbne pakćiki instalować a zarjadować
 
 ```bash
-sudo apt install -y git git-lfs docker.io docker-compose docker-buildx
+sudo apt install -y git git-lfs docker.io docker-compose docker-buildx jedit
 systemctl enable docker
 adduser lucija docker
 ```
@@ -116,6 +116,7 @@ cd mudrowak/doc/webcaptioner
 cp env.example .env
 cp -r ../../../modele/sotra-lsf-ds/Docker/models1 .
 cp ../../../modele/ctranslate-ol/version.txt .
+cp -r ../../../whisper_models/Korla whisper/
 docker-compose up -d
 ```
 

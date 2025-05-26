@@ -23,18 +23,18 @@
 
 - přepruwować, zo je NVIDIA ćěrjak instalowane:
 
-- tak mjenowane "unattended updates" su poprawom dobra myslička, za naš zaměr pak mylace:
+- tak mjenowane "unattended upgrades" su poprawom dobra myslička, za naš zaměr pak mylace:
 
 ```bash
-sudo apt remove --purge unattended-updates
+sudo apt remove --purge unattended-upgrades
 ```
 
 - trěbne pakćiki instalować a zarjadować
 
 ```bash
 sudo apt install -y git git-lfs docker.io docker-compose docker-buildx jedit
-systemctl enable docker
-adduser lucija docker
+sudo systemctl enable docker
+sudo adduser lucija docker
 ```
 - wužiwarja wotzjewić a zaso přizjewić, kontrola:
 
@@ -58,8 +58,8 @@ git clone https://github.com/WitajSotra/modele
 
 ```bash
 cd mudrowak/doc/models/
-cat README.md
-atd
+jedit README.md
+--> fijałkojty dźěl spody "code" linku-po-lince wuwjesć, model pak prawje wuzwolić
 ```
 
 - model pozdźišo do praweho rjadowaka kopěrować
@@ -89,9 +89,10 @@ cd modele
 git checkout 89242e4fee9a59290b5e79531cc10319b9933ee7
 cd sotra-lsf-ds/
 cat README.md
+cd Docker/
 docker build -t sotra-lsf .
 
-cd ..
+cd ../../
 cd ctranslate-ol/
 cat README.md
 docker build -t ctranslator .
@@ -104,7 +105,7 @@ docker build -t ctranslator .
 ```bash
 cd docker_vosk
 git checkout 2dbfde5ceabbd698cc4b5d1495866468f7c7244e
-sudo apt install -f nvidia-cuda-toolkit
+sudo apt install -y nvidia-cuda-toolkit gcc g++
 ./detect_whisper_options.sh
 docker build ...
 ```
@@ -117,6 +118,7 @@ cp env.example .env
 cp -r ../../../modele/sotra-lsf-ds/Docker/models1 .
 cp ../../../modele/ctranslate-ol/version.txt .
 cp -r ../../../whisper_models/Korla whisper/
+sudo apt install -y python3-distutils-extra
 docker-compose up -d
 ```
 

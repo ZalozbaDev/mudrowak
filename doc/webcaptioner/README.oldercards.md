@@ -29,6 +29,8 @@ checkout git@github.com:danielzoba/whisper.cpp.git branch v1.7.2_CUDA10
 CC=/opt/gcc-8/bin/gcc CXX=/opt/gcc-8/bin/g++ GGML_CUDA=1 CUDA_DOCKER_ARCH=compute_30 make -j 4 main
 
 checkout git@github.com:danielzoba/whisper.cpp.git branch v1.7.3_CUDA10
+checkout git@github.com:danielzoba/whisper.cpp.git branch v1.7.4_CUDA10
+checkout git@github.com:danielzoba/whisper.cpp.git branch v1.7.5_CUDA10
 
 cmake -B build -DGGML_CUDA=1 -DCMAKE_CUDA_ARCHITECTURES=30 -DCMAKE_CUDA_STANDARD=14 -DCMAKE_CUDA_STANDARD_REQUIRED=true && cmake --build build -j 4 --config Release
 

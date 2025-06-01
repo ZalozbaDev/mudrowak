@@ -143,6 +143,8 @@ whisper_print_timings:   batchd time = 51484.68 ms /  3554 runs (   14.49 ms per
 whisper_print_timings:   prompt time =  2145.27 ms /   987 runs (    2.17 ms per run)
 whisper_print_timings:    total time = 125552.00 ms
 
+only timing diff to unquantized
+
 ### q4_0
 
 [00:00:00.000 --> 00:00:29.980]  Słyšimy čitanje z lista sej a toho japoštowa pawoła romjanam bratřeja sotry jeli je bóh za nas štó je přećiwo nam wón njeje swojeho syna přelutował ale je jeho za nas wšěch podał kak by nam wón z nim wšitko njedarił štó budźe skoržić přećiwo wuzwolenym božim hdyž bóh wusprawnja štó móhł tamać.
@@ -164,6 +166,8 @@ whisper_print_timings:   decode time =    90.12 ms /     3 runs (   30.04 ms per
 whisper_print_timings:   batchd time = 54181.95 ms /  2990 runs (   18.12 ms per run)
 whisper_print_timings:   prompt time =  2297.10 ms /   988 runs (    2.32 ms per run)
 whisper_print_timings:    total time = 129068.53 ms
+
+many timing diffs, some content diff to unquantized
 
 ### q6_k
 
@@ -190,3 +194,4 @@ whisper_print_timings:   batchd time = 64660.17 ms /  3691 runs (   17.52 ms per
 whisper_print_timings:   prompt time =  2209.41 ms /   987 runs (    2.24 ms per run)
 whisper_print_timings:    total time = 139210.62 ms
 
+some timing diff, almost equal content to unquantized

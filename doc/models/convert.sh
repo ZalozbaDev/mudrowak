@@ -68,6 +68,23 @@ case $MODEL in
 		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_v3_turbo_hsb/ /cache/openai_whisper/ /output/Korla/whisper_large_v3_turbo_hsb/
 		;;
 	
+	Korla/whisper-large-v3-turbo-dsb)
+		if [ ! -e /cache/Korla_whisper_large_v3_turbo_dsb ]; then
+			git clone https://huggingface.co/Korla/whisper-large-v3-turbo-dsb /cache/Korla_whisper_large_v3_turbo_dsb
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+		if [ ! -e /cache/openai_whisper_large_v3_turbo ]; then
+			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3-turbo      /cache/openai_whisper_large_v3_turbo
+		fi
+
+		mkdir -p /output/Korla/whisper_large_v3_turbo_dsb
+		cd $WHISPER_V1_7_2
+		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_v3_turbo_dsb/ /cache/openai_whisper/ /output/Korla/whisper_large_v3_turbo_dsb/
+		;;
+	
 	danielzoba/whisper_small_adapted_2024_06_03)
 		if [ ! -e /cache/danielzoba_whisper_small_adapted_2024_06_03 ]; then
 			git clone https://huggingface.co/danielzoba/whisper_small_adapted_2024_06_03 /cache/danielzoba_whisper_small_adapted_2024_06_03

@@ -8,6 +8,8 @@ https://huggingface.co/Korla/whisper-large-hsb
 
 https://huggingface.co/Korla/whisper-large-v3-turbo-hsb
 
+https://huggingface.co/Korla/whisper-large-v3-turbo-dsb
+
 ## danielzoba
 
 https://huggingface.co/danielzoba/whisper_small_adapted_2024_06_03
@@ -44,6 +46,7 @@ supported models:
 * DigitalLabs42/whisper-medium-hsb-v1
 * DigitalLabs42/whisper-large-hsb-v1
 * DigitalLabs42/whisper-large-hsb-v1-version2 (separate branch)
+* Korla/whisper-large-v3-turbo-dsb
 
 non-working models:
 

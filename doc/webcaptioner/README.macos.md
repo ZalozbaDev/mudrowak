@@ -12,4 +12,6 @@
 - XCode "Command line tools"
     - "xcode-select --install" za instalaciju
     - "softwareupdate --list" a "softwareupdate --install" za najnowšu wersiju
-- 
+- Docker Desktop (https://docs.docker.com/desktop/setup/install/mac-install/)
+- Homebrew (https://brew.sh/)
+

@@ -116,6 +116,7 @@ cp vosk-server/websocket-cpp/asr_server.cpp whisper_out/
 g++ -Wall -Wno-write-strings -O3 -g3 -std=c++17 -O3 -fPIC -o whisper_out/whisper_main \
 -DVAD_FRAME_CONVERT_FLOAT \
 -I/opt/homebrew/opt/icu4c@77/include -I/opt/homebrew/opt/hunspell/include/hunspell -I/opt/homebrew/opt/libsndfile/include \
+-I/opt/homebrew/Cellar/boost/1.89.0/include/ \
 -Iwhisper_out/ -I. -Iwebrtc-audio-processing/webrtc/ -Iwhisper.cpp/ -Iwhisper.cpp/examples/ \
 -Iwhisper.cpp/include/ -Iwhisper.cpp/ggml/include/ \
 whisper_out/RecognizerBase.cpp \
@@ -124,7 +125,7 @@ whisper_out/HunspellPostProc.cpp whisper_out/CustomPostProc.cpp \
 whisper_out/asr_server.cpp \
 webrtc-audio-processing/build/webrtc/common_audio/libcommon_audio.a \
 -ldl -lpthread -lhunspell-1.7 -licuio -licuuc -lsndfile -lwhisper -lggml -lggml-cpu -lggml-base -Lwhisper_out/ \
--L /opt/homebrew/opt/hunspell/lib/ -L/opt/homebrew/opt/icu4c@77/lib/ -L/opt/homebrew/opt/libsndfile/lib/
+-L /opt/homebrew/opt/hunspell/lib/ -L/opt/homebrew/opt/icu4c@77/lib/ -L/opt/homebrew/opt/libsndfile/lib/ 
 
 
 ```

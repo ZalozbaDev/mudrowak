@@ -30,27 +30,25 @@ https://huggingface.co/DigitalLabs42/whisper-medium-hsb-v1
 
 https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1
 
-# GGML conversion
+# model conversion
+
+
+|model name|ggml support|coreml support|ct2 support|
+|----------|------------|--------------|-----------|
+|Korla/hsb_stt_demo                                            |x| | |
+|Korla/whisper-large-hsb                                       |x| | |
+|danielzoba/whisper_small_adapted_2024_06_03                   |x| | |
+|DILHTWD/whisper-large-v3-hsb                                  |x| | |
+|zalozbadev/whisper_small_v3_2024_10                           |x| | |
+|Korla/whisper-large-v3-turbo-hsb                              |x| | |
+|DILHTWD/whisper-large-v3-turbo-hsb                            |x| | |
+|DigitalLabs42/whisper-medium-hsb-v1                           |x| | |
+|DigitalLabs42/whisper-large-hsb-v1                            |x| | |
+|DigitalLabs42/whisper-large-hsb-v1-version2 (separate branch) |x| | |
+|Korla/whisper-large-v3-turbo-dsb                              |x| | |
+|Korla/Wav2Vec2BertForCTC-hsb                                  | | | |
 
 replace MODEL variable with "USERNAME/MODELNAME" 
-
-supported models:
-
-* Korla/hsb_stt_demo
-* Korla/whisper-large-hsb
-* danielzoba/whisper_small_adapted_2024_06_03
-* DILHTWD/whisper-large-v3-hsb
-* zalozbadev/whisper_small_v3_2024_10
-* Korla/whisper-large-v3-turbo-hsb
-* DILHTWD/whisper-large-v3-turbo-hsb
-* DigitalLabs42/whisper-medium-hsb-v1
-* DigitalLabs42/whisper-large-hsb-v1
-* DigitalLabs42/whisper-large-hsb-v1-version2 (separate branch)
-* Korla/whisper-large-v3-turbo-dsb
-
-non-working models:
-
-* Korla/Wav2Vec2BertForCTC-hsb
 
 ```code
 

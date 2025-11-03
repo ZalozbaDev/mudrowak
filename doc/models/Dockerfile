@@ -2,7 +2,9 @@ FROM python:3.10.12-slim-bookworm
 
 # docker build --progress=plain -t convert_to_ggml .
 
-RUN pip install torch==2.5.1 numpy==2.1.3 transformers==4.46.3
+COPY requirements.txt /
+
+RUN pip install -r /requirements.txt
 
 RUN apt update && apt install -y git git-lfs
 

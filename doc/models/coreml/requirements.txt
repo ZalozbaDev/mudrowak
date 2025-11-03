@@ -1,0 +1,5 @@
+torch==2.5.0
+ane_transformers
+openai-whisper
+coremltools==8.3.0
+

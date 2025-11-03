@@ -63,8 +63,10 @@ case $MODEL in
 		cp /cache/openai_whisper_large_v3_turbo/tokenizer.json           /cache/Korla_whisper_large_v3_turbo_hsb/
 		cp /cache/openai_whisper_large_v3_turbo/preprocessor_config.json /cache/Korla_whisper_large_v3_turbo_hsb/
 		
+        ## GGML ##
+
 		mkdir -p /output/Korla/whisper_large_v3_turbo_hsb
-		cd $WHISPER_V1_7_2
+		cd $WHISPER_V1_7_4
 		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_v3_turbo_hsb/ /cache/openai_whisper/ /output/Korla/whisper_large_v3_turbo_hsb/
 		;;
 	

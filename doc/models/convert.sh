@@ -200,21 +200,25 @@ case $MODEL in
 		python3 ./models/convert-safetensors-to-ggml.py /cache/DigitalLabs42_whisper_large_hsb_v1/ /cache/openai_whisper/ /output/DigitalLabs42/whisper_large_hsb_v1/
 		;;
 
-	Korla/Wav2Vec2BertForCTC-hsb)
-		if [ ! -e /cache/Korla_Wav2Vec2BertForCTC-hsb ]; then
-			git clone https://huggingface.co/Korla/Wav2Vec2BertForCTC-hsb /cache/Korla_Wav2Vec2BertForCTC-hsb
+	Korla/Wav2Vec2BertForCTC-hsb-2024)
+		if [ ! -e /cache/Korla_Wav2Vec2BertForCTC-hsb-2024 ]; then
+			git clone https://huggingface.co/Korla/Wav2Vec2BertForCTC-hsb /cache/Korla_Wav2Vec2BertForCTC-hsb-2024
 		fi
-		if [ ! -e /cache/openai_whisper ]; then
-			git clone https://github.com/openai/whisper                /cache/openai_whisper
-		fi
-		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
 		
-		mkdir -p /output/Korla/Wav2Vec2BertForCTC-hsb
-		
-		cd $WHISPER_V1_7_4
-		python3 ./models/convert-h5-to-ggml.py /cache/Korla_Wav2Vec2BertForCTC/ /cache/openai_whisper/ /output/Korla/Wav2Vec2BertForCTC-hsb/
+		pushd /cache/Korla_Wav2Vec2BertForCTC-hsb-2024
+		git checkout f24ed5bdee8bee672db9f9cc758a03e1482b2450
+		popd
 		;;
 		
+	Korla/Wav2Vec2BertForCTC-hsb-2025)
+		if [ ! -e /cache/Korla_Wav2Vec2BertForCTC-hsb-2025 ]; then
+			git clone https://huggingface.co/Korla/Wav2Vec2BertForCTC-hsb /cache/Korla_Wav2Vec2BertForCTC-hsb-2025
+		fi
+		
+		pushd /cache/Korla_Wav2Vec2BertForCTC-hsb-2025
+		git checkout 585ce204aaf6471087cf981677f0d6e35cce8f17
+		popd
+		;;
 		
 	DigitalLabs42/whisper-large-hsb-v1-version2)
 		if [ ! -e /cache/DigitalLabs42_whisper-large-hsb-v1-version2 ]; then

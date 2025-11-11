@@ -70,6 +70,28 @@ case $MODEL in
 		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_v3_turbo_hsb/ /cache/openai_whisper/ /output/Korla/whisper_large_v3_turbo_hsb/
 		;;
 	
+	Korla/whisper-large-v3-turbo-hsb-0)
+		if [ ! -e /cache/Korla_whisper_large_v3_turbo_hsb-0 ]; then
+			git clone https://huggingface.co/Korla/whisper-large-v3-turbo-hsb-0 /cache/Korla_whisper_large_v3_turbo_hsb-0
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+		if [ ! -e /cache/openai_whisper_large_v3_turbo ]; then
+			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3-turbo      /cache/openai_whisper_large_v3_turbo
+		fi
+
+		cp /cache/openai_whisper_large_v3_turbo/vocab.json        /cache/Korla_whisper_large_v3_turbo_hsb-0/
+		cp /cache/openai_whisper_large_v3_turbo/added_tokens.json /cache/Korla_whisper_large_v3_turbo_hsb-0/
+		
+        ## GGML ##
+
+		mkdir -p /output/Korla/whisper_large_v3_turbo_hsb-0
+		cd $WHISPER_V1_7_4
+		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_v3_turbo_hsb-0/ /cache/openai_whisper/ /output/Korla/whisper_large_v3_turbo_hsb-0/
+		;;
+	
 	Korla/whisper-large-v3-turbo-dsb)
 		if [ ! -e /cache/Korla_whisper_large_v3_turbo_dsb ]; then
 			git clone https://huggingface.co/Korla/whisper-large-v3-turbo-dsb /cache/Korla_whisper_large_v3_turbo_dsb

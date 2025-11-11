@@ -40,6 +40,7 @@ https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1
 |DILHTWD/whisper-large-v3-hsb                                  |x| | |
 |zalozbadev/whisper_small_v3_2024_10                           |x| | |
 |Korla/whisper-large-v3-turbo-hsb                              |x|x| |
+|Korla/whisper-large-v3-turbo-hsb-0                            |x| | |
 |DILHTWD/whisper-large-v3-turbo-hsb                            |x| | |
 |DigitalLabs42/whisper-medium-hsb-v1                           |x| | |
 |DigitalLabs42/whisper-large-hsb-v1                            |x| | |

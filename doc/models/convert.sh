@@ -82,8 +82,13 @@ case $MODEL in
 			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3-turbo      /cache/openai_whisper_large_v3_turbo
 		fi
 
-		cp /cache/openai_whisper_large_v3_turbo/vocab.json        /cache/Korla_whisper_large_v3_turbo_hsb-0/
-		cp /cache/openai_whisper_large_v3_turbo/added_tokens.json /cache/Korla_whisper_large_v3_turbo_hsb-0/
+		# files are now present in repo
+		# cp /cache/openai_whisper_large_v3_turbo/vocab.json        /cache/Korla_whisper_large_v3_turbo_hsb-0/
+		# cp /cache/openai_whisper_large_v3_turbo/added_tokens.json /cache/Korla_whisper_large_v3_turbo_hsb-0/
+		
+		if [ ! -e /cache/Korla_whisper_large_v3_turbo_hsb-0/generation_config.json ]; then
+			cp /cache/openai_whisper_large_v3_turbo/generation_config.json        /cache/Korla_whisper_large_v3_turbo_hsb-0/
+		fi
 		
         ## GGML ##
 

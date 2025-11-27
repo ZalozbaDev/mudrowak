@@ -4,6 +4,26 @@ Nawod za instalaciju swójskeho systema za spóznawanje a simultany přełožk.
 
 ## Přihotowanja
 
+## Spóznawanski system
+
+```code
+git clone git@github.com:ZalozbaDev/docker_vosk.git
+cd docker_vosk/
+git checkout unify_recognizers # TBD fixed commit hash
+./detect_whisper_options.sh
+head vosk_server_whisper/Dockerfile
+docker build ...
+```
+
+## sotra.app za přełožk (z "libretranslate API")
+
+```code
+git clone git@github.com:ZalozbaDev/sotra_modele.git
+cd sotra_modele/sotra-lsf-ds/Docker/
+git checkout workaround_jitsi_limitation # TBD fixed commit hash
+docker build -t sotra_libretranslate .
+```
+
 ### File system
 
 as root:

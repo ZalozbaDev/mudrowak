@@ -14,6 +14,7 @@ git checkout unify_recognizers # TBD fixed commit hash
 head vosk_server_whisper/Dockerfile
 docker build ...
 ```
+Pohladaj za to tež na tutón nawod za [webcaptioner](doc/webcaptioner/README.md)
 
 ### sotra.app za přełožk (z "libretranslate API")
 
@@ -46,11 +47,13 @@ unzip ../docker-jitsi-meet-stable-WERSIJA.zip
 
 #### nastajenja
 
+přidatne nastajenja za spóznawanje a přełožk:
+
 ```code
 cd deploy/docker-jitsi-meet-stable-WERSIJA/
-
-
-
+cp ../../config/custom.yml .
+cp env.example .env
+cat ../../config/env_append.txt >> .env
 ```
 
 

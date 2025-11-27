@@ -57,6 +57,18 @@ cp env.example .env
 cat ../../config/env_append.txt >> .env
 ```
 
+potom dataju ".env" wobdźěłać a sćěhowace nastajenja přiměrić:
+
+* PUBLIC_URL
+* JVB_ADVERTISE_IPS
+
+přidatne dataje za spóznawanje wobstarać a składować, hlej za spóznawanski model
+tutón [nawod](doc/webcaptioner/README.md#model-za-spóznawanje-twarić)
+
+```code
+mkdir -p logs/ whisper/ model/
+cp -r ../../../whisper_models/SELECTED_MODEL whisper/
+```
 
 
 ### File system

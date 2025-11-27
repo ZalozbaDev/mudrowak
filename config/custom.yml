@@ -1,0 +1,47 @@
+version: '3.5'
+
+services:
+
+    # VOSK / Kaldi container
+    vosk-de:
+        # when using German recognition
+        image: alphacep/kaldi-de:latest
+        restart: ${RESTART_POLICY:-unless-stopped}
+        depends_on:
+            - transcriber
+        networks:
+            meet.jitsi:
+
+    # custom whisper container
+    vosk-hsb-whisper:
+        image: vosk_server_whisper:latest
+        privileged: true
+        restart: ${RESTART_POLICY:-unless-stopped}
+        environment:
+            - VOSK_SAMPLE_RATE
+            - VOSK_LOG_AUDIO
+            - MODEL_PATH_FULL
+            - VOSK_SHOW_WORDS
+            - VOSK_REPLACEMENT_FILE
+            - VOSK_MODEL_LANGUAGE
+            - VOSK_WHISPER_MAX_CONTEXT
+            - VOSK_WHISPER_DISABLE_TIMESTAMPS
+            - VOSK_VAD_ALGO
+            - VOSK_WHISPER_NO_FALLBACK
+        volumes:
+            - ./logs:/logs
+            - ./whisper/:/whisper
+            - ./model:/model
+        depends_on:
+            - transcriber
+        networks:
+            meet.jitsi:
+
+    # custom sotra container (libretranslate API)
+    sotra-libretranslate:
+        image: sotra_libretranslate:latest
+        restart: ${RESTART_POLICY:-unless-stopped}
+        depends_on:
+            - transcriber
+        networks:
+            meet.jitsi:

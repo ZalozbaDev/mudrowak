@@ -4,7 +4,7 @@ Nawod za instalaciju swójskeho systema za spóznawanje a simultany přełožk.
 
 ## Přihotowanja
 
-## Spóznawanski system
+### Spóznawanski system
 
 ```code
 git clone git@github.com:ZalozbaDev/docker_vosk.git
@@ -15,7 +15,7 @@ head vosk_server_whisper/Dockerfile
 docker build ...
 ```
 
-## sotra.app za přełožk (z "libretranslate API")
+### sotra.app za přełožk (z "libretranslate API")
 
 ```code
 git clone git@github.com:ZalozbaDev/sotra_modele.git
@@ -23,6 +23,37 @@ cd sotra_modele/sotra-lsf-ds/Docker/
 git checkout workaround_jitsi_limitation # TBD fixed commit hash
 docker build -t sotra_libretranslate .
 ```
+
+### "Jitsi Meet" jako "docker"
+
+https://github.com/jitsi/docker-jitsi-meet/releases
+
+wobstaraće sebi najnowši pakćik (.zip)
+
+testowane su:
+
+* 10184
+* (10655)?
+
+přihotujće sebi wšitko za instalaciju:
+
+```code
+rm -rf deploy/
+mkdir -p deploy/
+cd deploy/
+unzip ../docker-jitsi-meet-stable-WERSIJA.zip
+```
+
+#### nastajenja
+
+```code
+cd deploy/docker-jitsi-meet-stable-WERSIJA/
+
+
+
+```
+
+
 
 ### File system
 

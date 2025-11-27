@@ -14,7 +14,8 @@ git checkout unify_recognizers # TBD fixed commit hash
 head vosk_server_whisper/Dockerfile
 docker build ...
 ```
-Pohladaj za to tež na tutón nawod za [webcaptioner](doc/webcaptioner/README.md)
+Pohladaj za to tež na tutón nawod za [webcaptioner](doc/webcaptioner/README.md#vosk).
+
 
 ### sotra.app za přełožk (z "libretranslate API")
 

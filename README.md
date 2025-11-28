@@ -68,33 +68,25 @@ tutón [nawod](doc/webcaptioner/README.md#model-za-spóznawanje-twarić)
 ```code
 mkdir -p logs/ whisper/ model/
 cp -r ../../../whisper_models/SELECTED_MODEL whisper/
+cp ../../doc/models/replacement_lists/*.txt whisper/
 ```
 
+nowe hesła za cyły system wutworić
 
-### File system
-
-as root:
-
-```bash
-mkdir -p /containers/jitsi-meet/inst_9220/.jitsi-meet-cfg/{web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
-```
-
-### Environment configuration
-
-Prepare configuration file:
-
-```bash
-cp env.example .env
+```code
 ./gen-passwords.sh 
 ```
 
-Search & replace all "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" values.
-If you don't have an API key for the custom translation, leave it as-is.
+### trěbne rjadowaki
 
-Then adjust the config to your needs.
-
-## Wužiwanje & Aktualizować
+tute rjadowaki wutworić / za nowu wersiju Jitsi wuprózdnić:
 
 ```bash
-docker-compose -f docker-compose.yml -f jibri.yml -f etherpad.yml -f jigasi.yml up -d --build
+mkdir -p ~/.jitsi-meet-cfg/{web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+```
+
+## Wužiwanje
+
+```bash
+docker-compose -f docker-compose.yml -f transcriber.yml -f jibri.yml -f custom.yml up -d
 ```

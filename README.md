@@ -35,7 +35,7 @@ wobstaraće sebi najnowši pakćik (.zip)
 testowane su:
 
 * 10184
-* (10655)?
+* 10655
 
 přihotujće sebi wšitko za instalaciju:
 

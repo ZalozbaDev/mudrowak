@@ -41,6 +41,8 @@ services:
     sotra-libretranslate:
         image: sotra_libretranslate:latest
         restart: ${RESTART_POLICY:-unless-stopped}
+        volumes:
+            - ./models1/:/app/models1
         depends_on:
             - transcriber
         networks:

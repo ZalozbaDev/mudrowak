@@ -7,7 +7,7 @@ Nawod za instalaciju swójskeho systema za spóznawanje a simultany přełožk.
 ### Spóznawanski system
 
 ```code
-git clone git@github.com:ZalozbaDev/docker_vosk.git
+git clone https://github.com/ZalozbaDev/docker_vosk
 cd docker_vosk/
 git checkout unify_recognizers # TBD fixed commit hash
 ./detect_whisper_options.sh
@@ -20,7 +20,7 @@ Pohladaj za to tež na tutón nawod za [webcaptioner](doc/webcaptioner/README.md
 ### sotra.app za přełožk (z "libretranslate API")
 
 ```code
-git clone git@github.com:ZalozbaDev/sotra_modele.git
+git clone https://github.com/ZalozbaDev/sotra_modele
 cd sotra_modele/sotra-lsf-ds/Docker/
 git checkout workaround_jitsi_limitation # TBD fixed commit hash
 docker build -t sotra_libretranslate .
@@ -69,6 +69,12 @@ tutón [nawod](doc/webcaptioner/README.md#model-za-spóznawanje-twarić)
 mkdir -p logs/ whisper/ model/
 cp -r ../../../whisper_models/SELECTED_MODEL whisper/
 cp ../../doc/models/replacement_lists/*.txt whisper/
+```
+
+přidatne dataje za přełožk wobstarać
+
+```code
+cp -r ~/sotra_modele/sotra-lsf-ds/Docker/models1 .
 ```
 
 nowe hesła za cyły system wutworić

@@ -93,6 +93,35 @@ mkdir -p ~/.jitsi-meet-cfg/{web,transcripts,prosody/config,prosody/prosody-plugi
 
 ## Wužiwanje
 
+### Zakładna wersija
+
 ```bash
 docker-compose -f docker-compose.yml -f transcriber.yml -f jibri.yml -f custom.yml up -d
 ```
+
+### Přidawki
+
+#### Etherpad
+
+wukomentuj "ETHERPAD_URL_BASE=" w .env a startuj aplikaciju tak:
+
+```bash
+docker-compose -f docker-compose.yml -f transcriber.yml -f jibri.yml -f custom.yml -f etherpad.yml up -d
+```
+
+KEDŹBU! Tu njeje datowa banka za Etherpad nastajena! Pads so trajne njeskładuja!
+
+#### Whiteboard (Excalidraw)
+
+wukomentuj "WHITEBOARD_COLLAB_SERVER_URL_BASE=" w .env a startuj aplikaciju tak:
+
+```bash
+docker-compose -f docker-compose.yml -f transcriber.yml -f jibri.yml -f custom.yml -f whiteboard.yml up -d
+```
+#### Wšitko hromadźe
+
+```bash
+docker-compose -f docker-compose.yml -f transcriber.yml -f jibri.yml -f custom.yml -f etherpad.yml -f whiteboard.yml up -d
+```
+
+

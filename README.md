@@ -124,4 +124,26 @@ docker-compose -f docker-compose.yml -f transcriber.yml -f jibri.yml -f custom.y
 docker-compose -f docker-compose.yml -f transcriber.yml -f jibri.yml -f custom.yml -f etherpad.yml -f whiteboard.yml up -d
 ```
 
+### Wěstota
 
+w ".env" tute 3 opcije zaswěćić:
+
+* ENABLE_AUTH=1
+* ENABLE_GUESTS=1
+* AUTH_TYPE=internal
+
+nastajenje wuẑiwarjow w contejneru "prosody"
+
+wužiwarske mjeno a hesło přidać:
+
+```bash
+docker-compose exec prosody /bin/bash
+prosodyctl --config /config/prosody.cfg.lua register WUŽIWARSKE_MJENO meet.jitsi HESŁO
+```
+
+wužiwarjo pokazać a wumazać:
+
+```bash
+find /config/data/meet%2ejitsi/ -type f -exec basename {} .dat \;
+prosodyctl --config /config/prosody.cfg.lua unregister WUŽIWARSKE_MJENO meet.jitsi
+```

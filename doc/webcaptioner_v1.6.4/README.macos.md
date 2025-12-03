@@ -45,7 +45,7 @@ brew install python@3.11
 
 ```bash
 cd docker_vosk
-git checkout 05baa5b31d0b4a712a8b13082b91a1c76f4f8d43
+git checkout 20ecb6aded304d30cb156985c02e40e7597ff499
 git clone https://github.com/ZalozbaDev/webrtc-audio-processing.git webrtc-audio-processing
 cd webrtc-audio-processing && git checkout 8f54329708f2d5eef477b76339d44d9a31583118
 brew install meson abseil cmake 
@@ -96,6 +96,7 @@ echo $BREW_RESAMPLE_VERSION; if [[ ! -e /opt/homebrew/Cellar/libresample/${BREW_
 
 g++ -Wall -Wno-write-strings -O3 -g3 -std=c++17 -O3 -fPIC -o whisper_out/vosk_whisper_server \
 -DVAD_FRAME_CONVERT_FLOAT \
+-Wno-mismatched-tags \
 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_BLAS -DGGML_USE_CPU -DGGML_USE_METAL \
 -I/opt/homebrew/opt/${BREW_ICU_VERSION}/include -I/opt/homebrew/opt/hunspell/include/hunspell -I/opt/homebrew/opt/libsndfile/include \
 -I/opt/homebrew/Cellar/boost/${BREW_BOOST_VERSION}/include/ \
@@ -108,8 +109,9 @@ whisper_out/AudioLogger.cpp whisper_out/CustomPostProc.cpp whisper_out/HunspellP
 whisper_out/RecognizerBase.cpp whisper_out/RepetitionRemover.cpp whisper_out/ResamplerLibResample_48_16.cpp whisper_out/ResamplerWebRTC_48_16.cpp \
 whisper_out/SileroVadIterator.cpp whisper_out/VADWrapperSilero.cpp whisper_out/VADWrapperWebRTC.cpp whisper_out/vosk_api_wrapper.cpp whisper_out/VoskRecognizer.cpp \
 webrtc-audio-processing/build/webrtc/common_audio/libcommon_audio.a \
--ldl -lpthread -lhunspell-1.7 -licuio -licuuc -lsndfile -lwhisper -lggml -lggml-cpu -lggml-base -Lwhisper_out/ \
--L /opt/homebrew/opt/hunspell/lib/ -L/opt/homebrew/opt/${BREW_ICU_VERSION}/lib/ -L/opt/homebrew/opt/libsndfile/lib/ 
+-ldl -lpthread -lhunspell-1.7 -licuio -licuuc -lsndfile -lonnxruntime -lresample -lwhisper -lggml -lggml-cpu -lggml-base -Lwhisper_out/ \
+-L/opt/homebrew/opt/hunspell/lib/ -L/opt/homebrew/opt/${BREW_ICU_VERSION}/lib/ -L/opt/homebrew/opt/libsndfile/lib/ -L/opt/homebrew/opt/libresample/lib \
+-L/opt/homebrew/Cellar/onnxruntime/${BREW_ONNX_VERSION}/lib
 ```
 
 ## system startować

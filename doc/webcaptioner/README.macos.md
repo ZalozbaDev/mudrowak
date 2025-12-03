@@ -28,11 +28,11 @@ beži bjez zmylkow
 
 ## Software wobstarać
 
-hlej README.md 
+hlej [README.md](README.md) 
 
 ## Model za spóznawanje twarić
 
-hlej README.md ze sćěhowacymi změnami:
+hlej [README.md](README.md) ze sćěhowacymi změnami:
 
 * jenož modele, kiž w tabulce maja křižik pola "coreml", wužiwać!
 * potom sćěhowace skripty wuwjesć:
@@ -49,7 +49,7 @@ cd ..
 
 ### webcaptioner
 
-hlej README.md
+hlej [README.md](README.md)
 
 ### sotra
 

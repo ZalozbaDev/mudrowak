@@ -40,7 +40,7 @@ https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1
 |DILHTWD/whisper-large-v3-hsb                                  |x| | |
 |zalozbadev/whisper_small_v3_2024_10                           |x| | |
 |Korla/whisper-large-v3-turbo-hsb                              |x|x| |
-|Korla/whisper-large-v3-turbo-hsb-0                            |x| | |
+|Korla/whisper-large-v3-turbo-hsb-0                            |x|x| |
 |DILHTWD/whisper-large-v3-turbo-hsb                            |x| | |
 |DigitalLabs42/whisper-medium-hsb-v1                           |x| | |
 |DigitalLabs42/whisper-large-hsb-v1                            |x| | |
@@ -56,7 +56,7 @@ replace MODEL variable with "USERNAME/MODELNAME"
 docker build --progress=plain -t convert_to_ggml .
 mkdir ~/cache
 mkdir ~/whisper_models/
-docker run -e MODEL="Korla/hsb_stt_demo" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
+docker run -e MODEL="Korla/whisper-large-v3-turbo-hsb" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
 
 ```
 

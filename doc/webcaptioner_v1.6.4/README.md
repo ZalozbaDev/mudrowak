@@ -63,6 +63,10 @@ head vosk_server_whisper/Dockerfile
 docker build ...
 ```
 
+### bamborak
+
+TBD
+
 ## system startować
 
 ```bash

@@ -126,6 +126,14 @@ docker compose -f docker-compose.macos.yml up -d
 
 ```bash
 cd docker_vosk
-DYLD_LIBRARY_PATH=./whisper_out/ VOSK_SAMPLE_RATE=48000 ./whisper_out/vosk_whisper_server 0.0.0.0 2700 1 ~/whisper_models/Korla/whisper_large_v3_turbo_hsb/coreml/ggml-large-v3-turbo.bin
+DYLD_LIBRARY_PATH=./whisper_out/ VOSK_SAMPLE_RATE=48000 VOSK_WHISPER_NO_FALLBACK=true VOSK_SHOW_WORDS=True VOSK_REPLACEMENT_FILE=~/mudrowak/doc/models/replacement_lists/Korla_whisper_large_v3_turbo_hsb-0.txt ./whisper_out/vosk_whisper_server 0.0.0.0 2700 1 ~/whisper_models/Korla/whisper_large_v3_turbo_hsb/coreml/ggml-large-v3-turbo.bin
+```
+
+```bash
+cd bamborak/backend
+mkdir -p temp/
+brew install sox
+source pythonenv/bin/activate
+PYTORCH_ENABLE_MPS_FALLBACK=1 python3.11 app.py
 ```
 

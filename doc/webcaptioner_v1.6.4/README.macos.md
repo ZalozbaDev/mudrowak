@@ -36,7 +36,7 @@ git clone https://huggingface.co/Thorsten-Voice/VITS
 cd bamborak
 git checkout ea78647e4f26fb42cd005d4a47f6322892c5f050
 cd backend
-brew install python@3.11
+brew install python@3.11 sox
 ./0001_venv.sh
 ./0005_install.sh
 ```
@@ -132,8 +132,14 @@ DYLD_LIBRARY_PATH=./whisper_out/ VOSK_SAMPLE_RATE=48000 VOSK_WHISPER_NO_FALLBACK
 ```bash
 cd bamborak/backend
 mkdir -p temp/
-brew install sox
 source pythonenv/bin/activate
 PYTORCH_ENABLE_MPS_FALLBACK=1 python3.11 app.py
 ```
+
+## komfort
+
+echo "....." > ~/Desktop/spóznawanje.command
+echo "....." > ~/Desktop/předčitanje.command
+chmod 755 ~/Desktop/spóznawanje.command
+chmod 755 ~/Desktop/předčitanje.command
 

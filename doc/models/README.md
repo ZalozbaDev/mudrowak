@@ -32,22 +32,22 @@ https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1
 
 # model conversion
 
-|model name|ggml support|coreml support|ct2 support|
-|----------|------------|--------------|-----------|
-|Korla/hsb_stt_demo                                            |x| | |
-|Korla/whisper-large-hsb                                       |x| | |
-|danielzoba/whisper_small_adapted_2024_06_03                   |x| | |
-|DILHTWD/whisper-large-v3-hsb                                  |x| | |
-|zalozbadev/whisper_small_v3_2024_10                           |x| | |
-|Korla/whisper-large-v3-turbo-hsb                              |x|x| |
-|Korla/whisper-large-v3-turbo-hsb-0                            |x|x| |
-|DILHTWD/whisper-large-v3-turbo-hsb                            |x| | |
-|DigitalLabs42/whisper-medium-hsb-v1                           |x| | |
-|DigitalLabs42/whisper-large-hsb-v1                            |x| | |
-|DigitalLabs42/whisper-large-hsb-v1-version2 (separate branch) |x| | |
-|Korla/whisper-large-v3-turbo-dsb                              |x| | |
-|Korla/Wav2Vec2BertForCTC-hsb-2024                             | | | |
-|Korla/Wav2Vec2BertForCTC-hsb-2025                             | | | |
+|model name|ggml support|coreml support|ct2 support|forcealign|lm fusion|
+|----------|------------|--------------|-----------|----------|---------|
+|Korla/hsb_stt_demo                                            |x| | | | |
+|Korla/whisper-large-hsb                                       |x| | | | |
+|danielzoba/whisper_small_adapted_2024_06_03                   |x| | | | |
+|DILHTWD/whisper-large-v3-hsb                                  |x| | | | |
+|zalozbadev/whisper_small_v3_2024_10                           |x| | | | |
+|Korla/whisper-large-v3-turbo-hsb                              |x|x| | | |
+|Korla/whisper-large-v3-turbo-hsb-0                            |x|x| | | |
+|DILHTWD/whisper-large-v3-turbo-hsb                            |x| | | | |
+|DigitalLabs42/whisper-medium-hsb-v1                           |x| | | | |
+|DigitalLabs42/whisper-large-hsb-v1                            |x| | | | |
+|DigitalLabs42/whisper-large-hsb-v1-version2 (separate branch) |x| | | | |
+|Korla/whisper-large-v3-turbo-dsb                              |x| | | | |
+|Korla/Wav2Vec2BertForCTC-hsb-2024                             | | | |x|x|
+|Korla/Wav2Vec2BertForCTC-hsb-2025                             | | | |x|x|
 
 replace MODEL variable with "USERNAME/MODELNAME" 
 

@@ -138,8 +138,10 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python3.11 app.py
 
 ## komfort
 
+```bash
 echo "....." > ~/Desktop/spóznawanje.command
 echo "....." > ~/Desktop/předčitanje.command
 chmod 755 ~/Desktop/spóznawanje.command
 chmod 755 ~/Desktop/předčitanje.command
+```
 

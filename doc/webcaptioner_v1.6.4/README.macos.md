@@ -34,9 +34,9 @@ git clone https://github.com/ZalozbaDev/bamborak
 git lfs install
 git clone https://huggingface.co/Thorsten-Voice/VITS
 cd bamborak
-git checkout ea78647e4f26fb42cd005d4a47f6322892c5f050
+git checkout 0c8a2163e9f8929259482e1736e3916bf843aba6
 cd backend
-brew install python@3.11 sox
+brew install python@3.13 sox
 ./0001_venv.sh
 ./0005_install.sh
 ```
@@ -133,7 +133,7 @@ DYLD_LIBRARY_PATH=./whisper_out/ VOSK_SAMPLE_RATE=48000 VOSK_WHISPER_NO_FALLBACK
 cd bamborak/backend
 mkdir -p temp/
 source pythonenv/bin/activate
-PYTORCH_ENABLE_MPS_FALLBACK=1 python3.11 app.py
+python3.13 app.py
 ```
 
 ## komfort

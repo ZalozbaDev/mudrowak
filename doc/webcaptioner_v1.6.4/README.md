@@ -65,7 +65,15 @@ docker build ...
 
 ### bamborak
 
-TBD
+```bash
+git clone https://github.com/ZalozbaDev/bamborak
+git lfs install
+git clone https://huggingface.co/Thorsten-Voice/VITS
+cd bamborak
+git checkout XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+cd backend
+docker build ...
+```
 
 ## system startować
 

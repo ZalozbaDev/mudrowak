@@ -86,6 +86,10 @@ cp env.example .env
 cp -r ../../../modele/sotra-lsf-ds/Docker/models1 .
 cp ../../../modele/ctranslate-ol/version.txt .
 cp -r ../../../whisper_models/Korla whisper/
+mkdir logs
+mkdir tts-modele
+cp ../../../VITS/config.json     tts_models/thorsten.json
+cp ../../../VITS/model_file.pth  tts_models/thorsten.pth
 sudo apt install -y python3-distutils-extra
 docker-compose up -d
 ```

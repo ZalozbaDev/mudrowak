@@ -70,7 +70,10 @@ git clone https://github.com/ZalozbaDev/bamborak
 git lfs install
 git clone https://huggingface.co/Thorsten-Voice/VITS
 cd bamborak
-git checkout XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+git checkout c88859ea3d3cfa97b7ae7c935de228707c70fda2
+git checkout 0c8a2163e9f8929259482e1736e3916bf843aba6 -- backend/app.py
+git checkout 0c8a2163e9f8929259482e1736e3916bf843aba6 -- backend/config.json
+./detect_accel_options.sh
 cd backend
 docker build ...
 ```

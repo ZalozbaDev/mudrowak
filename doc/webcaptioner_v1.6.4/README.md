@@ -85,6 +85,7 @@ cp env.example .env
 cp -r ../../../modele/sotra-lsf-ds/Docker/models1 .
 cp ../../../modele/ctranslate-ol/version.txt .
 cp -r ../../../whisper_models/Korla whisper/
+cp ../models/replacement_lists/Korla_whisper_large_v3_turbo_hsb-0.txt whisper/
 mkdir logs
 mkdir tts-modele
 cp ../../../VITS/config.json     tts-modele/thorsten.json

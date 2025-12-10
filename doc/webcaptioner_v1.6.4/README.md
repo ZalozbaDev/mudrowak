@@ -77,6 +77,19 @@ cd backend
 docker build ...
 ```
 
+nowše ličaki (najnowše NVIDIA karty), prošu hinaši "Dokerfile" wužiwać:
+
+```bash
+...
+git checkout 0c8a2163e9f8929259482e1736e3916bf843aba6 -- backend/config.json
+git checkout b551453d751adb9bdd505e9857764034b986201c -- backend/Dockerfile.py312.cuda
+...
+
+...
+cd backend
+docker build -f Dockerfile.py312.cuda ...
+```
+
 ## system startować
 
 ```bash

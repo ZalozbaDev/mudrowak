@@ -13,6 +13,8 @@ JIGASI_TRANSCRIBER_VOSK_URL={"de": "ws://vosk-de:2700", "hsb" : "ws://vosk-hsb-w
 
 JIGASI_TRANSCRIBER_LIBRETRANSLATE_URL="http://sotra-libretranslate:3000/libretranslate"
 
+JIGASI_TRANSCRIBER_ADVERTISE_URL=true
+
 VOSK_SAMPLE_RATE=48000
 VOSK_LOG_AUDIO=false
 MODEL_PATH_FULL=/whisper/Korla/whisper_large_v3_turbo_hsb-0/ggml-model.bin

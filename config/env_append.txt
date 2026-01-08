@@ -6,10 +6,10 @@ ENABLE_TRANSCRIPTIONS=1
 JIGASI_TRANSCRIBER_ENABLE_TRANSLATION=1
 JIGASI_TRANSCRIBER_CUSTOM_SERVICE=org.jitsi.jigasi.transcription.VoskTranscriptionService
 JIGASI_TRANSCRIBER_CUSTOM_TRANSLATION_SERVICE=org.jitsi.jigasi.transcription.LibreTranslateTranslationService
-TRANSLATION_LANGUAGES=['de', 'hsb']
-TRANSLATION_LANGUAGES_HEAD=['de', 'hsb']
+TRANSLATION_LANGUAGES=['de', 'hsb', 'dsb']
+TRANSLATION_LANGUAGES_HEAD=['de', 'hsb', 'dsb']
 
-JIGASI_TRANSCRIBER_VOSK_URL={"de": "ws://vosk-de:2700", "hsb" : "ws://vosk-hsb-whisper:2700"}
+JIGASI_TRANSCRIBER_VOSK_URL={"de": "ws://vosk-de:2700", "hsb" : "ws://vosk-hsb-whisper:2700", "dsb" : "ws://vosk-dsb-whisper:2700"}
 
 JIGASI_TRANSCRIBER_LIBRETRANSLATE_URL="http://sotra-libretranslate:3000/libretranslate"
 
@@ -17,7 +17,9 @@ JIGASI_TRANSCRIBER_ADVERTISE_URL=true
 
 VOSK_SAMPLE_RATE=48000
 VOSK_LOG_AUDIO=false
-MODEL_PATH_FULL=/whisper/Korla/whisper_large_v3_turbo_hsb-0/ggml-model.bin
-VOSK_REPLACEMENT_FILE=/whisper/Korla_whisper_large_v3_turbo_hsb-0.txt
+MODEL_PATH_FULL_HSB=/whisper/Korla/whisper_large_v3_turbo_hsb-0/ggml-model.bin
+VOSK_REPLACEMENT_FILE_HSB=/whisper/Korla_whisper_large_v3_turbo_hsb-0.txt
 VOSK_SHOW_WORDS=True
 VOSK_WHISPER_NO_FALLBACK=true
+
+MODEL_PATH_FULL_DSB=/whisper/Korla/whisper_large_v3_turbo_dsb/ggml-model.bin

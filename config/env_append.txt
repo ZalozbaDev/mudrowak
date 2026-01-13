@@ -19,7 +19,7 @@ VOSK_SAMPLE_RATE=48000
 VOSK_LOG_AUDIO=false
 MODEL_PATH_FULL_HSB=/whisper/Korla/whisper_large_v3_turbo_hsb-0/ggml-model.bin
 VOSK_REPLACEMENT_FILE_HSB=/whisper/Korla_whisper_large_v3_turbo_hsb-0.txt
-VOSK_SHOW_WORDS=True
+VOSK_SHOW_WORDS=False
 VOSK_WHISPER_NO_FALLBACK=true
 
 MODEL_PATH_FULL_DSB=/whisper/Korla/whisper_large_v3_turbo_dsb/ggml-model.bin

@@ -1,0 +1,107 @@
+version: '3.6'
+services:
+  webcaptioner-ng:
+    image: webcaptioner-ng:latest
+    restart: unless-stopped
+    environment:
+        - REACT_APP_WEBCAPTIONER_SERVER
+        - REACT_APP_YOUTUBE_REGION
+        - REACT_APP_PASSWORD
+        - REACT_APP_DEFAULT_SOTRA_MODEL
+        - REACT_APP_DEFAULT_YOUTUBE_TIME_OFFSET
+        - REACT_APP_MAX_LINES_IN_HISTORY
+        - REACT_APP_DEFAULT_VOSK_SAMPLE_RATE
+    ports:
+        - '80:3000'
+    networks:
+      webcaptioner_ng_private:
+
+  webcaptioner-ng-back:
+    image: webcaptioner-ng-back:latest
+    restart: unless-stopped
+    environment:
+        - WEBCAPTIONER_BACKEND_PORT
+        - SOTRA_SERVER_CTRANSLATE_URL
+        - SOTRA_SERVER_FAIRSEQ_URL
+        - VOSK_SERVER_URL
+        - MONGODB_URI
+        - JWT_SECRET_KEY
+        - FREE_PASSWORD
+        - BAMBORAK_SERVER
+    ports:
+        - '4000:4000'
+    networks:
+      webcaptioner_ng_private:
+
+  webcaptioner-ng-back-mongo:
+    image: mongo:8.0.4-noble
+#    ports:
+#        - '27017:27017'
+    restart: unless-stopped
+    environment:
+        - MONGO_INITDB_ROOT_USERNAME
+        - MONGO_INITDB_ROOT_PASSWORD
+    volumes:
+        - ./mongo:/data/db
+    networks:
+      webcaptioner_ng_private:
+    
+    
+  webcaptioner-vosk-server:
+    image: vosk_server_whisper:latest
+    privileged: true
+    restart: unless-stopped
+    environment:
+        - VOSK_SAMPLE_RATE
+        - VOSK_LOG_AUDIO
+        - MODEL_PATH_FULL
+        - VOSK_SHOW_WORDS
+        - VOSK_REPLACEMENT_FILE
+        - VOSK_MODEL_LANGUAGE
+        - VOSK_WHISPER_MAX_CONTEXT
+        - VOSK_WHISPER_DISABLE_TIMESTAMPS
+    volumes:
+        - ./logs:/logs
+        - ./whisper/:/whisper
+#    ports:
+#        - '80:2700'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      webcaptioner_ng_private:
+
+  webcaptioner-sotra-fairseq:
+    image: sotra-lsf:latest
+    volumes:
+     - ./models1/:/app/models1
+#    ports:
+#     - "3000:3000"
+    restart: unless-stopped
+    networks:
+      webcaptioner_ng_private:
+
+  webcaptioner-sotra-ctranslate:
+    image: ctranslator:latest
+    volumes:
+     - ./version.txt:/app/version.txt
+#    ports:
+#     - "25000:25000"
+    restart: unless-stopped
+    networks:
+      webcaptioner_ng_private:
+
+  bamborak-backend:
+    image: bamborak_backend_cuda:latest
+    privileged: true
+    restart: unless-stopped
+    volumes:
+      - ./tts-modele:/usr/app/src/tts_models/
+      - ./logs:/usr/app/src/logs/
+    networks:
+      webcaptioner_ng_private:
+
+networks:
+  webcaptioner_ng_private:

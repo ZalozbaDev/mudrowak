@@ -32,7 +32,7 @@ case $MODEL in
 		popd
 		
 		mkdir -p /output/Korla_Wav2Vec2BertForCTC-hsb-0
-		python3 ./convert-to-onnx.py /cache/Korla_Wav2Vec2BertForCTC-hsb-0//output/Korla_Wav2Vec2BertForCTC-hsb-0/wav2vec2.onnx 
+		python3 ./convert-to-onnx.py /cache/Korla_Wav2Vec2BertForCTC-hsb-0/ /output/Korla_Wav2Vec2BertForCTC-hsb-0/wav2vec2.onnx 
 		
 		;;
 		

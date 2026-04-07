@@ -3,6 +3,8 @@
 from transformers import AutoModelForCTC, AutoProcessor, AutoTokenizer
 import librosa
 import torch
+from pathlib import Path
+import sys
 
 dir_model   = Path(sys.argv[1])
 path_out    = Path(sys.argv[2])

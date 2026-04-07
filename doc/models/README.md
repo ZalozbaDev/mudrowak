@@ -46,8 +46,6 @@ https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1
 |DigitalLabs42/whisper-large-hsb-v1                            |hsb|x| | | | |
 |DigitalLabs42/whisper-large-hsb-v1-version2 (separate branch) |hsb|x| | | | |
 |Korla/whisper-large-v3-turbo-dsb                              |dsb|x| | | | |
-|Korla/Wav2Vec2BertForCTC-hsb-2024                             |hsb| | | |x|x|
-|Korla/Wav2Vec2BertForCTC-hsb-2025                             |hsb| | | |x|x|
 |zalozbadev/whisper-large-v3-turbo-hsb                         |hsb|x| | | | |
 |zalozbadev/whisper-large-v3-turbo-hsb-aug                     |hsb|x| | | | |
 |zalozbadev/whisper-large-v3-turbo-hsb-aug-longest-trained     |hsb|x| | | | |

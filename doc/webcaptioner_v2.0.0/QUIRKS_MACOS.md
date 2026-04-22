@@ -1,6 +1,6 @@
 # Wosebitosće za MacOS
 
-## Model
+## Model za spóznawanje twarić
 
 * jenož modele, kiž w tabulce maja křižik pola "coreml", wužiwać!
 * potom sćěhowace skripty wuwjesć:

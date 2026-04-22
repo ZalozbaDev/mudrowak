@@ -1,6 +1,33 @@
 # Simultan přełožowar na swójskim ličaku
 
-## Powšitkowne přihoty
+Systm zasadnje běži na ličakach z Linux (+ GPU), Windows (+ GPU) a MacOS (+ Apple Silicon). Najlěpje testowana je wersija z Linux.
+
+Ličak móže so po instalacije ze syći wotpinyć, to rěka zo so při wužiwanju žane daty do syće njepřenjesu.
+
+## Powšitkowne přihoty ličaka
+
+## Ličak wupytać
+
+### Linux a Windows
+
+- grafikowa karta wot NVIDIA je trěbna, njedyrbi pak najnowša być
+- hlej přehlad: https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
+- karty pod nadpismom "Pascal" abo nowše su kmani
+- spomjatkujće sebi tu ličbu zady "SM" (na přikład "61" za kartu "GTX 1060")
+- karta dyrbi 4GB GPU RAM měć (hdyž ma samo 8GB GPU RAM, mamy wjetši wuběrk spóznawanskich modelow)
+- někak 100..150GB městna swobodne na tačele
+
+### MacOS
+
+- Wšitke ličaki z "Apple Silicon" su kmani
+- Husto maja nekajke "M" a po tym ličbu w mjenje ("MacBook Air M3" abo tak)
+
+## Ličak přihotować
+
+Za instalaciju a přihot Linux systema hladajće prošu [tu](./INSTALL_LINUX.md).
+
+
+
 
 Sćěhujće nawodom [tule](../webcaptioner/README.md) wot zapoatka hač do wotrězka "Software wobstarać"
 

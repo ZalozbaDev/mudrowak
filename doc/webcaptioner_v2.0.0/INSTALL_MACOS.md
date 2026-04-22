@@ -3,6 +3,7 @@
 ## Trěbnu software instalować
 
 - Visual Studio Code (https://code.visualstudio.com/)
+- XCode? (z "App Store")
 - XCode "Command line tools"
     - "xcode-select --install" za instalaciju
     - "softwareupdate --list" a "softwareupdate --install" za najnowšu wersiju

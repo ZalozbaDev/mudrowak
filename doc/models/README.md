@@ -58,7 +58,7 @@ replace MODEL variable with "USERNAME/MODELNAME"
 docker build --progress=plain -t convert_to_ggml .
 mkdir ~/cache
 mkdir ~/whisper_models/
-docker run -e MODEL="Korla/whisper-large-v3-turbo-hsb" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
+docker run -e MODEL="Korla/whisper-large-v3-turbo-hsb-0" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
 
 ```
 

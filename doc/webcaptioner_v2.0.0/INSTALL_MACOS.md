@@ -8,7 +8,11 @@
     - "softwareupdate --list" a "softwareupdate --install" za najnowšu wersiju
 - Docker Desktop (https://docs.docker.com/desktop/setup/install/mac-install/)
 - Homebrew (https://brew.sh/)
-- python 3.11 (https://www.python.org/downloads/macos/) (snano tež "Homebrew" funguje)
+- python 3.12: 
+
+```bash
+brew install python@3.12
+```
 
 ## Docker startować
 

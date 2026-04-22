@@ -30,22 +30,28 @@ Za přihot Windows systema hladajće prošu [tu](./INSTALL_WINDOWS.md).
 
 Za přihot MacOS systema hladajće prošu [tu](./INSTALL_MACOS.md).
 
+## Software wobstarać
 
-
-
-Sćěhujće nawodom [tule](../webcaptioner/README.md) wot zapoatka hač do wotrězka "Software wobstarać"
+```bash
+git clone https://github.com/ZalozbaDev/mudrowak
+git clone https://github.com/ZalozbaDev/docker_vosk
+git clone https://github.com/ZalozbaDev/webcaptioner-ng
+git clone https://github.com/ZalozbaDev/webcaptioner-ng-server
+git clone https://github.com/WitajSotra/modele
+```
 
 ## Model za spóznawanje twarić
 
 ```bash
 cd mudrowak/doc/models/
-jedit README.md
---> dźěl spody "code" linku-po-lince wuwjesć, při tym pak prawy model wuzwolić, tule doporučeny model:
+cat README.md
+
+# dźěl spody "code" linku-po-lince wuwjesć, při tym pak prawy model wuzwolić, tule doporučeny model:
 
 docker run -e MODEL="Korla/whisper-large-v3-turbo-hsb-0" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
 ```
 
-- model pozdźišo do praweho rjadowaka kopěrować
+- sebi spomjatkować, zo model pozdźišo do praweho rjadowaka kopěrować dyrbiće
 
 ## Jednotliwe containery twarić
 

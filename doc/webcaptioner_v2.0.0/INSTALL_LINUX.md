@@ -34,6 +34,9 @@ sudo apt install -y git git-lfs docker.io docker-compose docker-buildx jedit
 sudo systemctl enable docker
 sudo adduser lucija docker
 ```
+
+Opcionelnje wobstarajće sebi "Visual Studio Code" za Linux.
+
 - wužiwarja wotzjewić a zaso přizjewić, kontrola:
 
 ```bash

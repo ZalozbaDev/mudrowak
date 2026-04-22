@@ -26,6 +26,8 @@ Ličak móže so po instalacije ze syći wotpinyć, to rěka zo so při wužiwan
 
 Za instalaciju a přihot Linux systema hladajće prošu [tu](./INSTALL_LINUX.md).
 
+Za instalaciju a přihot Windows systema hladajće prošu [tu](./INSTALL_WINDOWS.md).
+
 
 
 

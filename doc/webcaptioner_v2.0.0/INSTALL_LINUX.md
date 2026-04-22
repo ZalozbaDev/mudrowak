@@ -42,7 +42,7 @@ docker ps
 
 beži bjez zmylkow (njepokaza drje hišće žane "kontejnery", njesmě pak tež žadyn zmylk pokazać)
 
-## Pokiwy za starše grafikowe karty
+## Pokiwy za starše (popawm njpodpěrowane) grafikowe karty
 
 Jenož za ekspertow! Wuspěch njeje garantowane!
 

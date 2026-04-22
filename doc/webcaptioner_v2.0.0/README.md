@@ -59,14 +59,14 @@ docker run -e MODEL="Korla/whisper-large-v3-turbo-hsb-0" --mount type=bind,sourc
 
 ```bash
 cd webcaptioner-ng
-git checkout v1.6.4
+git checkout v2.0.0RC7
 cat README.md
 docker build -f docker/Dockerfile -t webcaptioner-ng .
 ```
 
 ```bash
 cd webcaptioner-ng-server
-git checkout v1.6.4
+git checkout v2.0.0RC7
 cat README.md
 docker build -f docker/Dockerfile -t webcaptioner-ng-back .
 ```

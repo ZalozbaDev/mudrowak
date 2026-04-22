@@ -51,7 +51,7 @@ cat README.md
 docker run -e MODEL="Korla/whisper-large-v3-turbo-hsb-0" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
 ```
 
-Za MacOS prošu sćěhowace přidatne kročele přewjesć, hlej[tule](./QUIRKS_MACOS.md#Model).
+Za MacOS prošu sćěhowace přidatne kročele přewjesć, hlej [tule](./QUIRKS_MACOS.md#model-za-spóznawanje-twarić).
 
 - sebi spomjatkować, zo model pozdźišo do praweho rjadowaka kopěrować dyrbiće
 

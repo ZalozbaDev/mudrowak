@@ -1,3 +1,7 @@
+Za aktualny nawod pohladajće prošu [tule](../webcaptioner_v2.0.0/README.md).
+
+Tutón nawod pokaza instalaciju staršeje wersije, kaž je wona we tutorial-wideju na youtube demonstrowana.
+
 # Simultan přełožowar na swójskim ličaku
 
 - přistup na syć po instalacije njeje trjeba!

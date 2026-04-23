@@ -13,3 +13,16 @@ cd coreml/
 cd ..
 ```
 
+## sotra
+
+```bash
+nano Dockerfile # abo hinaši editor
+
+# po lince "WORKDIR /app" sćěhowace zapisać
+
+RUN apt update && apt install -y cmake libboost-all-dev libre2-dev python3-pybind11
+
+# dataju składować (CTRL+X y)
+
+```
+

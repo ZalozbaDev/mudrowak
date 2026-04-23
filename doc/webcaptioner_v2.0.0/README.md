@@ -82,12 +82,14 @@ cd sotra-lsf-ds/
 cat README.md
 cd Docker/
 docker build -t sotra-lsf .
-
 cd ../../
+
 cd ctranslate-ol/
 cat README.md
 docker build -t ctranslator .
 ```
+
+Njeda-li so druhi kontejner za MacOS twarić, hlej pokiw [tule](./QUIRKS_MACOS.md#sotra).
 
 - přidatne dataja pozdźišo do praweho rjadowaka kopěrować
 

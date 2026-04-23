@@ -72,3 +72,17 @@ cp ~/mudrowak/doc/webcaptioner_v2.0.0/macos_vosk_compile_helper.sh .
 
 Hdyž so tule zmylki pokazaja, prošu w skripće te jednotliwe wersije wuporjedźić.
 
+## bamborak
+
+```bash
+git clone https://github.com/ZalozbaDev/bamborak
+git lfs install
+git clone https://huggingface.co/Thorsten-Voice/VITS
+cd bamborak
+git checkout 0c8a2163e9f8929259482e1736e3916bf843aba6
+cd backend
+brew install python@3.13 sox
+./0001_venv.sh
+./0005_install.sh
+```
+

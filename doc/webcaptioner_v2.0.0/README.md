@@ -99,7 +99,7 @@ Za MacOS prošu hinašu wariantu za instalaciju wužiwać: [vosk](./QUIRKS_MACOS
 
 ```bash
 cd docker_vosk
-git checkout 05baa5b31d0b4a712a8b13082b91a1c76f4f8d43
+git checkout v2.0.0RC7
 sudo apt install -y nvidia-cuda-toolkit gcc g++
 ./detect_whisper_options.sh
 head vosk_server_whisper/Dockerfile 
@@ -107,6 +107,8 @@ docker build ...
 ```
 
 ### bamborak
+
+Za MacOS prošu hinašu wariantu za instalaciju wužiwać: [bamborak](./QUIRKS_MACOS.md#bamborak).
 
 ```bash
 git clone https://github.com/ZalozbaDev/bamborak

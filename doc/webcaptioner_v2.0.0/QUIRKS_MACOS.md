@@ -57,7 +57,7 @@ mkdir -p whisper_out/
 
 cp common/*.h common/*.cpp whisper_out/
 
-cp vosk_server_whisper/VoskRecognizer.cpp vosk_server_whisper/VoskRecognizer.h whisper_out/
+cp vosk_server_whisper/*.cpp vosk_server_whisper/*.h  vosk_server_whisper/VoskRecognizer.h whisper_out/
 
 cp whisper.cpp/build/src/*.dylib       whisper_out/
 cp whisper.cpp/build/ggml/src/*.dylib  whisper_out/

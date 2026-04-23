@@ -90,10 +90,23 @@ brew install python@3.13 sox
 
 ### skripty přihotować za komfortabelny start słužbow
 
+Wobstaramy sebi dataje za prawopisnu kontrolu spóznawanskeho wuslědka:
+* https://soblex.de/download/download.html
+* Prawopisny modul za LibreOffice sćahnyć
+
+```bash
+cd ~/Downloads/
+cp soblex_hsb_*.oxt soblex_hsb.zip
+unzip soblex_hsb.zip
+mkdir -p ~/soblex/
+cp hsb_DE_soblex*.aff ~/soblex/hsb_DE_soblex.aff
+cp hsb_DE_soblex*.dic ~/soblex/hsb_DE_soblex.dic
+```
+
 Dokelž spóznawanja a předčitanje na Mac OS separatnje běžeć dyrbi, wutworimy sebi skripty, kiž so z kliknjenjom na symbol wuwjesć daja.
 
 ```bash
-echo "cd docker_vosk && DYLD_LIBRARY_PATH=./whisper_out/ VOSK_SAMPLE_RATE=48000 VOSK_WHISPER_NO_FALLBACK=true VOSK_SHOW_WORDS=True VOSK_REPLACEMENT_FILE=~/mudrowak/doc/models/replacement_lists/Korla_whisper_large_v3_turbo_hsb-0.txt ./whisper_out/vosk_whisper_server 0.0.0.0 2700 1 ~/whisper_models/Korla/whisper_large_v3_turbo_hsb-0/coreml/ggml-large-v3-turbo.bin" > ~/Desktop/spóznawanje.command
+echo "cd docker_vosk && DYLD_LIBRARY_PATH=./whisper_out/ VOSK_SAMPLE_RATE=48000 VOSK_WHISPER_NO_FALLBACK=true VOSK_SHOW_WORDS=True VOSK_HUNSPELL_AFF_FILE=hsb_DE_soblex.aff VOSK_HUNSPELL_DIC_FILE=hsb_DE_soblex.dic VOSK_REPLACEMENT_FILE=~/mudrowak/doc/models/replacement_lists/Korla_whisper_large_v3_turbo_hsb-0.txt ./whisper_out/vosk_whisper_server 0.0.0.0 2700 1 ~/whisper_models/Korla/whisper_large_v3_turbo_hsb-0/coreml/ggml-large-v3-turbo.bin" > ~/Desktop/spóznawanje.command
 echo "cd bamborak/backend && mkdir -p temp/ && source pythonenv/bin/activate && python3.13 app.py" > ~/Desktop/předčitanje.command
 chmod 755 ~/Desktop/spóznawanje.command
 chmod 755 ~/Desktop/předčitanje.command

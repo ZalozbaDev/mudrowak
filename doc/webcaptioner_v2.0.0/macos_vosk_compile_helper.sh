@@ -47,7 +47,7 @@ whisper_out/RecognizerBase.cpp whisper_out/RepetitionRemover.cpp whisper_out/Res
 whisper_out/SileroVadIterator.cpp whisper_out/VADWrapperSilero.cpp whisper_out/VADWrapperWebRTC.cpp whisper_out/vosk_api_wrapper.cpp whisper_out/VoskRecognizer.cpp \
 whisper_out/SileroVadIterator.cpp whisper_out/AudioLogger.cpp \
 whisper_out/ResamplerWebRTC_8_16.cpp \
-whisper_out/HunspellPostProc.cpp whisper_out/CustomPostProc.cpp whisper_out/RepetitionRemover.cpp \
+whisper_out/RepetitionRemover.cpp \
 whisper_out/WhisperImpl.cpp whisper_out/WhisperPool.cpp \
 webrtc-audio-processing/build/webrtc/common_audio/libcommon_audio.a \
 -ldl -lpthread -lhunspell-1.7 -licuio -licuuc -lsndfile -lonnxruntime -lresample -lwhisper -lggml -lggml-cpu -lggml-base -Lwhisper_out/ \

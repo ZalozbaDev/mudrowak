@@ -45,11 +45,11 @@ cd ..
 brew install libsndfile hunspell icu4c boost onnxruntime libresample
 
 git clone https://github.com/ZalozbaDev/vosk-api.git vosk-api
-cd vosk-api && git checkout 1053cfa0f80039d2956de7e05a05c0b8db90c3c0
+cd vosk-api && git checkout 7ac989311dd23d4d9e3e12de170f076eb5b77be6
 cd ..
 
 git clone https://github.com/ZalozbaDev/vosk-server.git vosk-server
-cd vosk-server && git checkout 3d4ecb85bf5a8f39ead3749f49e7726fed3eed42
+cd vosk-server && git checkout aeb031987fb948941933936ffc802bf9c00ac461
 cd ..
 
 rm -rf whisper_out/

@@ -86,3 +86,27 @@ brew install python@3.13 sox
 ./0005_install.sh
 ```
 
+## system startować
+
+### skripty přihotować za komfortabelny start słužbow
+
+Dokelž spóznawanja a předčitanje na Mac OS separatnje běžeć dyrbi, wutworimy sebi skripty, kiž so z kliknjenjom na symbol wuwjesć daja.
+
+```bash
+echo "cd docker_vosk && DYLD_LIBRARY_PATH=./whisper_out/ VOSK_SAMPLE_RATE=48000 VOSK_WHISPER_NO_FALLBACK=true VOSK_SHOW_WORDS=True VOSK_REPLACEMENT_FILE=~/mudrowak/doc/models/replacement_lists/Korla_whisper_large_v3_turbo_hsb-0.txt ./whisper_out/vosk_whisper_server 0.0.0.0 2700 1 ~/whisper_models/Korla/whisper_large_v3_turbo_hsb/coreml/ggml-large-v3-turbo.bin" > ~/Desktop/spóznawanje.command
+echo "cd bamborak/backend && mkdir -p temp/ && source pythonenv/bin/activate && python3.13 app.py" > ~/Desktop/předčitanje.command
+chmod 755 ~/Desktop/spóznawanje.command
+chmod 755 ~/Desktop/předčitanje.command
+```
+
+### start
+
+Skripty "spóznawanje" a "předčitanje" wuwjesć.
+
+```bash
+cd mudrowak/doc/webcaptioner_v2.0.0
+cp env.mac.example .env
+cp -r ../../../modele/sotra-lsf-ds/Docker/models1 .
+cp ../../../modele/ctranslate-ol/version.txt .
+docker compose -f docker-compose.macos.yml up -d
+```

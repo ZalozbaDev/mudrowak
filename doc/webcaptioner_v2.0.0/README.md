@@ -112,6 +112,7 @@ Za MacOS prošu hinašu wariantu za instalaciju wužiwać: [bamborak](./QUIRKS_M
 
 ```bash
 git clone https://github.com/ZalozbaDev/bamborak
+brew install git-lfs
 git lfs install
 git clone https://huggingface.co/Thorsten-Voice/VITS
 cd bamborak
@@ -136,6 +137,8 @@ docker build -f Dockerfile.py312.cuda ...
 ```
 
 ## system startować
+
+MacOS system dyrbi so hinak startować: [Mac OS start](./QUIRKS_MACOS.md#system-startować).
 
 ```bash
 cd mudrowak/doc/webcaptioner_v1.6.4

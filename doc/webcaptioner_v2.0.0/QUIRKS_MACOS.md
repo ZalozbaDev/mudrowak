@@ -76,6 +76,7 @@ Hdyž so tule zmylki pokazaja, prošu w skripće te jednotliwe wersije wuporjed�
 
 ```bash
 git clone https://github.com/ZalozbaDev/bamborak
+brew install git-lfs
 git lfs install
 git clone https://huggingface.co/Thorsten-Voice/VITS
 cd bamborak

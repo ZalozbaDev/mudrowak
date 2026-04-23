@@ -106,32 +106,22 @@ head vosk_server_whisper/Dockerfile
 docker build ...
 ```
 
+Je-li waša grafikowa karta pře nowa, so architektura hišće njepodpěra. Zapisajće potom pola "NVIDIA_CUDA_ARCHITECTURE" mjeńšu ličbu (na přikład "90" by dyrbjało přeco hić).
+
+Maće-li pře staru kartu, dyrbiće wony "Dockerfile" změnić, pokiwy namkaće [tule](./INSTALL_LINUX.md#pokiwy-za-starše-popawm-njpodpěrowane-grafikowe-karty).
+
 ### bamborak
 
 Za MacOS prošu hinašu wariantu za instalaciju wužiwać: [bamborak](./QUIRKS_MACOS.md#bamborak).
 
 ```bash
 git clone https://github.com/ZalozbaDev/bamborak
-brew install git-lfs
 git lfs install
 git clone https://huggingface.co/Thorsten-Voice/VITS
 cd bamborak
-git checkout c88859ea3d3cfa97b7ae7c935de228707c70fda2
+git checkout 9a40ddbb911c943bcf05e5209602f451da87897f
 git checkout 0c8a2163e9f8929259482e1736e3916bf843aba6 -- backend/config.json
 ./detect_accel_options.sh
-cd backend
-docker build ...
-```
-
-nowše ličaki (najnowše NVIDIA karty), prošu hinaši "Dokerfile" wužiwać:
-
-```bash
-...
-git checkout 0c8a2163e9f8929259482e1736e3916bf843aba6 -- backend/config.json
-git checkout b551453d751adb9bdd505e9857764034b986201c -- backend/Dockerfile.py312.cuda
-...
-
-...
 cd backend
 docker build -f Dockerfile.py312.cuda ...
 ```

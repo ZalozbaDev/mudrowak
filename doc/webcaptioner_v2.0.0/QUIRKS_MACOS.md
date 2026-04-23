@@ -63,7 +63,8 @@ cp whisper.cpp/build/src/*.dylib       whisper_out/
 cp whisper.cpp/build/ggml/src/*.dylib  whisper_out/
 
 cp vosk-api/src/vosk_api.h whisper_out/
-cp vosk-server/websocket-cpp/asr_server.cpp whisper_out/
+cp vosk-server/websocket-cpp/*.cpp vosk-server/websocket-cpp/*.h whisper_out/
+cp -r vosk-server/websocket-cpp/nlohmann whisper_out/
 
 cp ~/mudrowak/doc/webcaptioner_v2.0.0/macos_vosk_compile_helper.sh .
 ./macos_vosk_compile_helper.sh

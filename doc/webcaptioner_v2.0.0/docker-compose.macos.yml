@@ -11,6 +11,8 @@ services:
         - REACT_APP_DEFAULT_YOUTUBE_TIME_OFFSET
         - REACT_APP_MAX_LINES_IN_HISTORY
         - REACT_APP_DEFAULT_VOSK_SAMPLE_RATE
+        - REACT_APP_RECORDING_INFORMATION_LINE
+        - REACT_APP_DEFAULT_AUDIO_FORMAT
     ports:
         - '80:3000'
     networks:
@@ -28,6 +30,10 @@ services:
         - JWT_SECRET_KEY
         - FREE_PASSWORD
         - BAMBORAK_SERVER
+        - DB_ADMIN_FIRSTNAME
+        - DB_ADMIN_LASTNAME
+        - DB_ADMIN_EMAIL
+        - DB_ADMIN_PASSWORD
     ports:
         - '4000:4000'
     networks:

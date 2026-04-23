@@ -39,7 +39,8 @@ g++ -Wall -Wno-write-strings -O3 -g3 -std=c++17 -O3 -fPIC -o whisper_out/vosk_wh
 -I/opt/homebrew/Cellar/onnxruntime/${BREW_ONNX_VERSION}/include/onnxruntime/ \
 -Iwhisper_out/ -I. -Iwebrtc-audio-processing/webrtc/ -Iwhisper.cpp/ -Iwhisper.cpp/examples/ \
 -Iwhisper.cpp/include/ -Iwhisper.cpp/ggml/include/ \
-whisper_out/asr_server.cpp \
+-Iwhisper_out/nlohmann/json/single_include/ \
+whisper_out/asr_server.cpp whisper_out/vosk_commands.cpp \
 whisper_out/RecognizerBase.cpp \
 whisper_out/AudioLogger.cpp whisper_out/CustomPostProc.cpp whisper_out/HunspellPostProc.cpp \
 whisper_out/RecognizerBase.cpp whisper_out/RepetitionRemover.cpp whisper_out/ResamplerLibResample_48_16.cpp whisper_out/ResamplerWebRTC_48_16.cpp \

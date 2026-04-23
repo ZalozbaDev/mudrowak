@@ -95,6 +95,8 @@ Njeda-li so druhi kontejner za MacOS twarić, hlej pokiw [tule](./QUIRKS_MACOS.m
 
 ### vosk
 
+Za MacOS prošu hinašu wariantu za instalaciju wužiwać: [vosk](./QUIRKS_MACOS.md#vosk).
+
 ```bash
 cd docker_vosk
 git checkout 05baa5b31d0b4a712a8b13082b91a1c76f4f8d43

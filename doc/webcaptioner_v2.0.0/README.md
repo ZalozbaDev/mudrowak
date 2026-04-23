@@ -131,14 +131,15 @@ docker build -f Dockerfile.py312.cuda ...
 MacOS system dyrbi so hinak startować: [Mac OS start](./QUIRKS_MACOS.md#system-startować).
 
 ```bash
-cd mudrowak/doc/webcaptioner_v1.6.4
+cd mudrowak/doc/webcaptioner_v2.0.0
 cp env.example .env
 cp -r ../../../modele/sotra-lsf-ds/Docker/models1 .
 cp ../../../modele/ctranslate-ol/version.txt .
+mkdir -p whisper/
 cp -r ../../../whisper_models/Korla whisper/
 cp ../models/replacement_lists/Korla_whisper_large_v3_turbo_hsb-0.txt whisper/
-mkdir logs
-mkdir tts-modele
+mkdir -p logs/
+mkdir -p tts-modele/
 cp ../../../VITS/config.json     tts-modele/thorsten.json
 cp ../../../VITS/model_file.pth  tts-modele/thorsten.pth
 sudo apt install -y python3-distutils-extra

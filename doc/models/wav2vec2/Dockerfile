@@ -11,6 +11,7 @@ RUN apt update && apt install -y git git-lfs
 COPY convert.sh /
 
 COPY convert-to-onnx.py /
+COPY convert-to-openvino.py /
 
 RUN chmod 755 convert.sh
 

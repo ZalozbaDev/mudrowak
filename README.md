@@ -89,6 +89,7 @@ cd deploy/docker-jitsi-meet-stable-WERSIJA/
 cp ../../config/wav2vec2/wav2vec2.yml .
 cp env.example .env
 cat ../../config/wav2vec2/env_append.txt >> .env
+cp ../../config/wav2vec2/asr_server_config.json .
 ```
 
 přidatne dataje za spóznawanje wobstarać a składować

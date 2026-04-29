@@ -16,15 +16,11 @@ services:
     vosk-hsb-wav2vec2:
         image: vosk_server_wav2vec2:latest
         restart: unless-stopped
+        command: ["python", "-u", "asr_server.py", "--config", "/app/asr_server_config.json"]
         environment:
-            - ASR_SERVER_INTERFACE
-            - ASR_SERVER_PORT
-            - ASR_MODEL_NAME
-            - ASR_SAMPLE_RATE
-            - ASR_VERBOSE_OUTPUT
-            - ASR_ONNX
-            - ASR_USE_LM
+            - ASR_SERVER_CONFIG
         volumes:
+            - ./asr_server_config.json:/app/asr_server_config.json:ro
             - ./models:/app/models/
             - ./lm:/app/lm/
             - ./spell:/app/spell/

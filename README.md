@@ -108,6 +108,8 @@ cd deploy/docker-jitsi-meet-stable-WERSIJA/
 mkdir -p models/Korla/Wav2Vec2BertForCTC-hsb-0/
 cp ../../../cache/Korla_Wav2Vec2BertForCTC-hsb-0/* models/Korla/Wav2Vec2BertForCTC-hsb-0/
 cp ../../../onnx_models/Korla_Wav2Vec2BertForCTC-hsb-0/wav2vec2.onnx* models/Korla/Wav2Vec2BertForCTC-hsb-0/
+mkdir -p models/Korla/Wav2Vec2BertForCTC-hsb-0/openvino/ov_fp16/
+cp ../../../onnx_models/Korla_Wav2Vec2BertForCTC-hsb-0/openvino/ov_fp16/model.* models/Korla/Wav2Vec2BertForCTC-hsb-0/openvino/ov_fp16/
 ```
 
 ##### zhromadne nastajenja

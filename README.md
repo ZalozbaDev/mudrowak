@@ -107,6 +107,7 @@ potom trěbne dataje kopěrować:
 cd deploy/docker-jitsi-meet-stable-WERSIJA/
 mkdir -p models/Korla/Wav2Vec2BertForCTC-hsb-0/
 cp ../../../cache/Korla_Wav2Vec2BertForCTC-hsb-0/* models/Korla/Wav2Vec2BertForCTC-hsb-0/
+cp ../../../onnx_models/Korla_Wav2Vec2BertForCTC-hsb-0/wav2vec2.onnx* models/Korla/Wav2Vec2BertForCTC-hsb-0/
 ```
 
 ##### zhromadne nastajenja

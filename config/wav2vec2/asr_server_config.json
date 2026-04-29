@@ -1,8 +1,8 @@
 {
 	"interface": "0.0.0.0",
 	"port": 2700,
-	"backend": "pytorch",
-	"model_name": "/app/models/Korla/Wav2Vec2BertForCTC-hsb-0/",
+	"backend": "onnx",
+	"model_name": "/app/models/Korla/Wav2Vec2BertForCTC-hsb-0/wav2vec2.onnx",
 	"processor_name": "/app/models/Korla/Wav2Vec2BertForCTC-hsb-0/",
 	"openvino_device": "CPU",
 	"sample_rate": 48000,

@@ -1,0 +1,128 @@
+version: '3.5'
+
+services:
+
+    # VOSK / Kaldi container
+#    vosk-de:
+        # when using German recognition
+#        image: alphacep/kaldi-de:latest
+#        restart: ${RESTART_POLICY:-unless-stopped}
+#        depends_on:
+#            - transcriber
+#        networks:
+#            meet.jitsi:
+
+    # custom whisper container HSB
+    vosk-hsb-whisper:
+        image: vosk_server_whisper:latest
+        privileged: true
+        restart: ${RESTART_POLICY:-unless-stopped}
+        environment:
+            - VOSK_SAMPLE_RATE
+            - VOSK_LOG_AUDIO
+            - MODEL_PATH_FULL=${MODEL_PATH_FULL_HSB}
+            - VOSK_SHOW_WORDS
+            - VOSK_REPLACEMENT_FILE=${VOSK_REPLACEMENT_FILE_HSB}
+            - VOSK_MODEL_LANGUAGE=en
+            - VOSK_WHISPER_MAX_CONTEXT
+            - VOSK_WHISPER_DISABLE_TIMESTAMPS
+            - VOSK_VAD_ALGO
+            - VOSK_WHISPER_NO_FALLBACK
+        volumes:
+            - ./logs:/logs
+            - ./whisper/:/whisper
+            - ./model:/model
+        depends_on:
+            - transcriber
+        networks:
+            meet.jitsi:
+
+    # custom whisper container DSB
+    vosk-dsb-whisper:
+        image: vosk_server_whisper:latest
+        privileged: true
+        restart: ${RESTART_POLICY:-unless-stopped}
+        environment:
+            - VOSK_SAMPLE_RATE
+            - VOSK_LOG_AUDIO
+            - MODEL_PATH_FULL=${MODEL_PATH_FULL_DSB}
+            - VOSK_SHOW_WORDS
+            - VOSK_REPLACEMENT_FILE=${VOSK_REPLACEMENT_FILE_DSB}
+            - VOSK_MODEL_LANGUAGE=en
+            - VOSK_WHISPER_MAX_CONTEXT
+            - VOSK_WHISPER_DISABLE_TIMESTAMPS
+            - VOSK_VAD_ALGO
+            - VOSK_WHISPER_NO_FALLBACK
+        volumes:
+            - ./logs:/logs
+            - ./whisper/:/whisper
+            - ./model:/model
+        depends_on:
+            - transcriber
+        networks:
+            meet.jitsi:
+
+    # custom whisper container for other supported languages
+    vosk-multilang-whisper:
+        image: vosk_server_whisper:latest
+        privileged: true
+        restart: ${RESTART_POLICY:-unless-stopped}
+        environment:
+            - VOSK_SAMPLE_RATE
+            - VOSK_LOG_AUDIO
+            - MODEL_PATH_FULL=${MODEL_PATH_FULL_MULTILANG}
+            - VOSK_SHOW_WORDS
+            - VOSK_REPLACEMENT_FILE=${VOSK_REPLACEMENT_FILE_NONE}
+            - VOSK_MODEL_LANGUAGE=auto
+            - VOSK_WHISPER_MAX_CONTEXT
+            - VOSK_WHISPER_DISABLE_TIMESTAMPS
+            - VOSK_VAD_ALGO
+            - VOSK_WHISPER_NO_FALLBACK
+        volumes:
+            - ./logs:/logs
+            - ./whisper/:/whisper
+            - ./model:/model
+        depends_on:
+            - transcriber
+        networks:
+            meet.jitsi:
+
+    # custom sotra container (libretranslate API)
+    sotra-libretranslate:
+        image: sotra_libretranslate:latest
+        restart: ${RESTART_POLICY:-unless-stopped}
+        volumes:
+            - ./models1/:/app/models1
+        depends_on:
+            - transcriber
+        networks:
+            meet.jitsi:
+
+    libretranslate:
+        image: libretranslate/libretranslate:v1.9.5
+        restart: ${RESTART_POLICY:-unless-stopped}
+        environment:
+            # Preload only the language pairs we care about to keep the image small.
+            # Override via LT_LOAD_ONLY env at compose time if needed.
+            LT_LOAD_ONLY: "en,de,cs,pl"
+            LT_DISABLE_WEB_UI: "false"
+            LT_UPDATE_MODELS: "false"
+        volumes:
+            - ./libretranslate-models/:/home/libretranslate/.local
+        depends_on:
+            - transcriber
+        networks:
+            meet.jitsi:
+
+    libretranslate-proxy:
+        image: libretranslate_proxy:latest
+        restart: ${RESTART_POLICY:-unless-stopped}
+        environment:
+            SOTRA_URL: "http://sotra-libretranslate:3000"
+            LIBRETRANSLATE_URL: "http://libretranslate:5000"
+            SOTRA_PAIRS: "hsb->de,de->hsb,dsb->de,de->dsb,hsb->dsb,dsb->hsb,cs->hsb,hsb->cs"
+        depends_on:
+            - transcriber
+        networks:
+            meet.jitsi:
+           

@@ -369,6 +369,22 @@ case $MODEL in
 		python3 ./models/convert-h5-to-ggml.py /cache/primeline_whisper-large-v3-german/ /cache/openai_whisper/ /output/primeline/whisper-large-v3-german/
 		;;
 	
+	openai/whisper-large-v3-turbo)
+		if [ ! -e /cache/openai_whisper_large_v3_turbo_multi ]; then
+			git clone https://huggingface.co/openai/whisper-large-v3-turbo /cache/openai_whisper_large_v3_turbo_multi
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+
+        ## GGML ##
+
+		mkdir -p /output/openai/whisper_large_v3_turbo
+		cd $WHISPER_V1_7_4
+		python3 ./models/convert-h5-to-ggml.py /cache/openai_whisper_large_v3_turbo_multi/ /cache/openai_whisper/ /output/openai/whisper_large_v3_turbo/
+		;;
+	
 	*)
 		echo "Model $MODEL unknown!"
 		;;

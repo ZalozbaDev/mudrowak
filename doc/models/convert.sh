@@ -424,6 +424,9 @@ case $MODEL in
 		if [ ! -e /cache/Korla_whisper_large_v3_turbo_hsb-v1/generation_config.json ]; then
 			cp /cache/openai_whisper_large_v3_turbo/generation_config.json        /cache/Korla_whisper_large_v3_turbo_hsb-v1/
 		fi
+		if [ ! -e /cache/Korla_whisper_large_v3_turbo_hsb-v1/preprocessor_config.json ]; then
+			cp /cache/openai_whisper_large_v3_turbo/preprocessor_config.json        /cache/Korla_whisper_large_v3_turbo_hsb-v1/
+		fi
 		
         ## GGML ##
 

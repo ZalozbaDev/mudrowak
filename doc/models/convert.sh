@@ -385,6 +385,22 @@ case $MODEL in
 		python3 ./models/convert-h5-to-ggml.py /cache/openai_whisper_large_v3_turbo_multi/ /cache/openai_whisper/ /output/openai/whisper_large_v3_turbo/
 		;;
 	
+	openai/whisper-large-v3)
+		if [ ! -e /cache/openai_whisper_large_v3_multi ]; then
+			git clone https://huggingface.co/openai/whisper-large-v3 /cache/openai_whisper_large_v3_multi
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+
+        ## GGML ##
+
+		mkdir -p /output/openai/whisper_large_v3
+		cd $WHISPER_V1_7_4
+		python3 ./models/convert-h5-to-ggml.py /cache/openai_whisper_large_v3_multi/ /cache/openai_whisper/ /output/openai/whisper_large_v3/
+		;;
+	
 	Korla/whisper_test)
 		if [ ! -e /cache/Korla_whisper_test ]; then
 			git clone https://huggingface.co/Korla/whisper_test /cache/Korla_whisper_test

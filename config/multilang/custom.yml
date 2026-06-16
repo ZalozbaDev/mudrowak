@@ -28,6 +28,9 @@ services:
             - VOSK_WHISPER_DISABLE_TIMESTAMPS
             - VOSK_VAD_ALGO
             - VOSK_WHISPER_NO_FALLBACK
+            - VOSK_PROB_THRESHOLD
+            - VOSK_LOGPROB_THRESHOLD
+            - VOSK_REJECT_RESPONSE
         volumes:
             - ./logs:/logs
             - ./whisper/:/whisper
@@ -53,6 +56,9 @@ services:
             - VOSK_WHISPER_DISABLE_TIMESTAMPS
             - VOSK_VAD_ALGO
             - VOSK_WHISPER_NO_FALLBACK
+            - VOSK_PROB_THRESHOLD
+            - VOSK_LOGPROB_THRESHOLD
+            - VOSK_REJECT_RESPONSE
         volumes:
             - ./logs:/logs
             - ./whisper/:/whisper
@@ -78,6 +84,9 @@ services:
             - VOSK_WHISPER_DISABLE_TIMESTAMPS
             - VOSK_VAD_ALGO
             - VOSK_WHISPER_NO_FALLBACK
+            - VOSK_PROB_THRESHOLD
+            - VOSK_LOGPROB_THRESHOLD
+            - VOSK_REJECT_RESPONSE
         volumes:
             - ./logs:/logs
             - ./whisper/:/whisper

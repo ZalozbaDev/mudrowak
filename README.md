@@ -52,6 +52,7 @@ testowane su:
 
 * 10184
 * 10655
+* 10888
 
 přihotujće sebi wšitko za instalaciju:
 

@@ -227,26 +227,6 @@ case $MODEL in
 		python3 ./models/convert-safetensors-to-ggml.py /cache/DigitalLabs42_whisper_large_hsb_v1/ /cache/openai_whisper/ /output/DigitalLabs42/whisper_large_hsb_v1/
 		;;
 
-	Korla/Wav2Vec2BertForCTC-hsb-2024)
-		if [ ! -e /cache/Korla_Wav2Vec2BertForCTC-hsb-2024 ]; then
-			git clone https://huggingface.co/Korla/Wav2Vec2BertForCTC-hsb /cache/Korla_Wav2Vec2BertForCTC-hsb-2024
-		fi
-		
-		pushd /cache/Korla_Wav2Vec2BertForCTC-hsb-2024
-		git checkout f24ed5bdee8bee672db9f9cc758a03e1482b2450
-		popd
-		;;
-		
-	Korla/Wav2Vec2BertForCTC-hsb-2025)
-		if [ ! -e /cache/Korla_Wav2Vec2BertForCTC-hsb-2025 ]; then
-			git clone https://huggingface.co/Korla/Wav2Vec2BertForCTC-hsb /cache/Korla_Wav2Vec2BertForCTC-hsb-2025
-		fi
-		
-		pushd /cache/Korla_Wav2Vec2BertForCTC-hsb-2025
-		git checkout 585ce204aaf6471087cf981677f0d6e35cce8f17
-		popd
-		;;
-		
 	DigitalLabs42/whisper-large-hsb-v1-version2)
 		if [ ! -e /cache/DigitalLabs42_whisper-large-hsb-v1-version2 ]; then
 			git clone https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1 /cache/DigitalLabs42_whisper_large_hsb_v1_version2
@@ -387,6 +367,88 @@ case $MODEL in
 		mkdir -p /output/primeline/whisper-large-v3-german
 		cd $WHISPER_V1_7_4
 		python3 ./models/convert-h5-to-ggml.py /cache/primeline_whisper-large-v3-german/ /cache/openai_whisper/ /output/primeline/whisper-large-v3-german/
+		;;
+	
+	openai/whisper-large-v3-turbo)
+		if [ ! -e /cache/openai_whisper_large_v3_turbo_multi ]; then
+			git clone https://huggingface.co/openai/whisper-large-v3-turbo /cache/openai_whisper_large_v3_turbo_multi
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+
+        ## GGML ##
+
+		mkdir -p /output/openai/whisper_large_v3_turbo
+		cd $WHISPER_V1_7_4
+		python3 ./models/convert-h5-to-ggml.py /cache/openai_whisper_large_v3_turbo_multi/ /cache/openai_whisper/ /output/openai/whisper_large_v3_turbo/
+		;;
+	
+	openai/whisper-large-v3)
+		if [ ! -e /cache/openai_whisper_large_v3_multi ]; then
+			git clone https://huggingface.co/openai/whisper-large-v3 /cache/openai_whisper_large_v3_multi
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+
+        ## GGML ##
+
+		mkdir -p /output/openai/whisper_large_v3
+		cd $WHISPER_V1_7_4
+		python3 ./models/convert-h5-to-ggml.py /cache/openai_whisper_large_v3_multi/ /cache/openai_whisper/ /output/openai/whisper_large_v3/
+		;;
+	
+	Korla/whisper_test)
+		if [ ! -e /cache/Korla_whisper_test ]; then
+			git clone https://huggingface.co/Korla/whisper_test /cache/Korla_whisper_test
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+		if [ ! -e /cache/openai_whisper_large_v3_turbo ]; then
+			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3-turbo      /cache/openai_whisper_large_v3_turbo
+		fi
+
+		mkdir -p /output/Korla/whisper_test
+		cd $WHISPER_V1_7_2
+		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_test/ /cache/openai_whisper/ /output/Korla/whisper_test/
+		;;
+	
+	Korla/whisper-large-v3-turbo-hsb-v1)
+		if [ ! -e /cache/Korla_whisper_large_v3_turbo_hsb-v1 ]; then
+			git clone https://huggingface.co/Korla/whisper-large-v3-turbo-hsb-v1 /cache/Korla_whisper_large_v3_turbo_hsb-v1
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+		if [ ! -e /cache/openai_whisper_large_v3_turbo ]; then
+			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3-turbo      /cache/openai_whisper_large_v3_turbo
+		fi
+
+		# possibly missing files
+		if [ ! -e /cache/Korla_whisper_large_v3_turbo_hsb-v1/vocab.json ]; then
+			cp /cache/openai_whisper_large_v3_turbo/vocab.json        /cache/Korla_whisper_large_v3_turbo_hsb-v1/
+		fi
+		if [ ! -e /cache/Korla_whisper_large_v3_turbo_hsb-v1/added_tokens.json ]; then
+			cp /cache/openai_whisper_large_v3_turbo/added_tokens.json /cache/Korla_whisper_large_v3_turbo_hsb-v1/
+		fi
+		if [ ! -e /cache/Korla_whisper_large_v3_turbo_hsb-v1/generation_config.json ]; then
+			cp /cache/openai_whisper_large_v3_turbo/generation_config.json        /cache/Korla_whisper_large_v3_turbo_hsb-v1/
+		fi
+		if [ ! -e /cache/Korla_whisper_large_v3_turbo_hsb-v1/preprocessor_config.json ]; then
+			cp /cache/openai_whisper_large_v3_turbo/preprocessor_config.json        /cache/Korla_whisper_large_v3_turbo_hsb-v1/
+		fi
+		
+        ## GGML ##
+
+		mkdir -p /output/Korla/whisper_large_v3_turbo_hsb-v1
+		cd $WHISPER_V1_7_4
+		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_v3_turbo_hsb-v1/ /cache/openai_whisper/ /output/Korla/whisper_large_v3_turbo_hsb-v1/
 		;;
 	
 	*)

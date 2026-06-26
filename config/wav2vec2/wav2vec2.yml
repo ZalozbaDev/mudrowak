@@ -1,0 +1,41 @@
+version: '3.5'
+
+services:
+
+    # VOSK / Kaldi container
+    vosk-de:
+        # when using German recognition
+        image: alphacep/kaldi-de:latest
+        restart: ${RESTART_POLICY:-unless-stopped}
+        depends_on:
+            - transcriber
+        networks:
+            meet.jitsi:
+
+    # custom wav2vec2 container HSB
+    vosk-hsb-wav2vec2:
+        image: vosk_server_wav2vec2:latest
+        restart: unless-stopped
+        command: ["python", "-u", "asr_server.py", "--config", "/app/asr_server_config.json"]
+        environment:
+            - ASR_SERVER_CONFIG
+        volumes:
+            - ./asr_server_config.json:/app/asr_server_config.json:ro
+            - ./models:/app/models/
+            - ./lm:/app/lm/
+            - ./spell:/app/spell/
+        depends_on:
+            - transcriber
+        networks:
+            meet.jitsi:
+
+    # custom sotra container (libretranslate API)
+    sotra-libretranslate:
+        image: sotra_libretranslate:latest
+        restart: ${RESTART_POLICY:-unless-stopped}
+        volumes:
+            - ./models1/:/app/models1
+        depends_on:
+            - transcriber
+        networks:
+            meet.jitsi:

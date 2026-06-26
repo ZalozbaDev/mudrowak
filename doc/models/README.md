@@ -46,12 +46,11 @@ https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1
 |DigitalLabs42/whisper-large-hsb-v1                            |hsb|x| | | | |
 |DigitalLabs42/whisper-large-hsb-v1-version2 (separate branch) |hsb|x| | | | |
 |Korla/whisper-large-v3-turbo-dsb                              |dsb|x| | | | |
-|Korla/Wav2Vec2BertForCTC-hsb-2024                             |hsb| | | |x|x|
-|Korla/Wav2Vec2BertForCTC-hsb-2025                             |hsb| | | |x|x|
 |zalozbadev/whisper-large-v3-turbo-hsb                         |hsb|x| | | | |
 |zalozbadev/whisper-large-v3-turbo-hsb-aug                     |hsb|x| | | | |
 |zalozbadev/whisper-large-v3-turbo-hsb-aug-longest-trained     |hsb|x| | | | |
 |primeline/whisper-large-v3-german                             |de |x| | | | |
+|openai/whisper-large-v3-turbo                                 |multi|x| | | | |
 
 replace MODEL variable with "USERNAME/MODELNAME" 
 
@@ -60,7 +59,7 @@ replace MODEL variable with "USERNAME/MODELNAME"
 docker build --progress=plain -t convert_to_ggml .
 mkdir ~/cache
 mkdir ~/whisper_models/
-docker run -e MODEL="Korla/whisper-large-v3-turbo-hsb" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
+docker run -e MODEL="Korla/whisper-large-v3-turbo-hsb-0" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
 
 ```
 

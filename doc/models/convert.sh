@@ -451,6 +451,23 @@ case $MODEL in
 		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_v3_turbo_hsb-v1/ /cache/openai_whisper/ /output/Korla/whisper_large_v3_turbo_hsb-v1/
 		;;
 	
+	Korla/whisper_test_translation)
+		if [ ! -e /cache/Korla_whisper_test_translation ]; then
+			git clone https://huggingface.co/Korla/whisper_test_translation /cache/Korla_whisper_test_translation
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+		if [ ! -e /cache/openai_whisper_large_v3_turbo ]; then
+			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3-turbo      /cache/openai_whisper_large_v3_turbo
+		fi
+
+		mkdir -p /output/Korla/whisper_test_translation
+		cd $WHISPER_V1_7_2
+		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_test_translation/ /cache/openai_whisper/ /output/Korla/whisper_test_translation/
+		;;
+	
 	*)
 		echo "Model $MODEL unknown!"
 		;;

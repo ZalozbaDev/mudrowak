@@ -2,7 +2,7 @@
 
 source pythonenv/bin/activate
 
-for i in Korla/whisper_large_v3_turbo_hsb Korla/whisper_large_v3_turbo_hsb-0 ; do
+for i in Korla/whisper_test_translation Korla/whisper_large_v3_turbo_hsb Korla/whisper_large_v3_turbo_hsb-0 ; do
     
     # remove leftovers from previous runs
     pushd whisper.cpp/

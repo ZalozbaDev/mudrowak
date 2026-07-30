@@ -51,6 +51,8 @@ https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1
 |zalozbadev/whisper-large-v3-turbo-hsb-aug-longest-trained     |hsb|x| | | | |
 |primeline/whisper-large-v3-german                             |de |x| | | | |
 |openai/whisper-large-v3-turbo                                 |multi|x| | | | |
+|openai/whisper-large-v3                                       |multi|x| | | | |
+|Korla/whisper-large-v3-turbo-hsb-v1                           |czech|x| | | | |
 
 replace MODEL variable with "USERNAME/MODELNAME" 
 

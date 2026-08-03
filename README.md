@@ -8,15 +8,12 @@ Nawod za instalaciju swójskeho systema za spóznawanje a simultany přełožk.
 
 #### Whisper
 
-Hdyž NVIDIA grafikowu kartu maš.
+Model za VAD:
 
 ```code
-git clone https://github.com/ZalozbaDev/docker_vosk
-cd docker_vosk/
-git checkout unify_recognizers # TBD fixed commit hash
-./detect_whisper_options.sh
-head vosk_server_whisper/Dockerfile
-docker build ...
+git clone https://github.com/ZalozbaDev/silero-vad.git
+cd silero-vad
+git checkout upstream_master
 ```
 
 Pohladaj za to tež na tutón nawod za [webcaptioner](doc/webcaptioner/README.md#vosk).
@@ -39,7 +36,6 @@ docker build -t vosk_server_wav2vec2 --progress=plain .
 git clone https://github.com/ZalozbaDev/sotra_modele
 cd sotra_modele/sotra-lsf-ds/Docker/
 git checkout workaround_jitsi_limitation # TBD fixed commit hash
-docker build -t sotra_libretranslate .
 ```
 
 ### "Jitsi Meet" jako "docker"
@@ -53,6 +49,7 @@ testowane su:
 * 10184
 * 10655
 * 10888
+* 11146
 
 přihotujće sebi wšitko za instalaciju:
 
@@ -81,6 +78,7 @@ tutón [nawod](doc/webcaptioner/README.md#model-za-spóznawanje-twarić)
 mkdir -p logs/ whisper/ model/
 cp -r ../../../whisper_models/SELECTED_MODEL whisper/
 cp ../../doc/models/replacement_lists/*.txt whisper/
+cp ~/silero-vad/src/silero_vad/data/silero_vad.onnx model/silero_vad_v6_2.onnx
 ```
 
 ##### Wav2vec2
@@ -137,7 +135,14 @@ nowe hesła za cyły system wutworić
 tute rjadowaki wutworić / za nowu wersiju Jitsi wuprózdnić:
 
 ```bash
-mkdir -p ~/.jitsi-meet-cfg/{web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+mkdir -p ~/.jitsi-meet-cfg/{web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri,storage}
+```
+
+#### libretranslate
+
+```bash
+mkdir -p ./libretranslate-models/
+chown -R 1032:1032 ./libretranslate-models/
 ```
 
 ## Wužiwanje
@@ -195,12 +200,12 @@ wužiwarske mjeno a hesło přidać:
 
 ```bash
 docker-compose exec prosody /bin/bash
-prosodyctl --config /config/prosody.cfg.lua register WUŽIWARSKE_MJENO meet.jitsi HESŁO
+prosodyctl --config /run/prosody/config/prosody.cfg.lua register WUŽIWARSKE_MJENO meet.jitsi HESŁO
 ```
 
 wužiwarjo pokazać a wumazać:
 
 ```bash
 find /config/data/meet%2ejitsi/ -type f -exec basename {} .dat \;
-prosodyctl --config /config/prosody.cfg.lua unregister WUŽIWARSKE_MJENO meet.jitsi
+prosodyctl --config /run/prosody/config/prosody.cfg.lua unregister WUŽIWARSKE_MJENO meet.jitsi
 ```

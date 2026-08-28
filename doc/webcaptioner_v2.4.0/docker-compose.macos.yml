@@ -1,0 +1,81 @@
+version: '3.6'
+services:
+  webcaptioner-ng:
+    image: webcaptioner-ng:latest
+    restart: unless-stopped
+    environment:
+        - FRONTEND_WEBCAPTIONER_SERVER
+        - FRONTEND_YOUTUBE_REGION
+        - FRONTEND_DEFAULT_SOTRA_MODEL
+        - FRONTEND_DEFAULT_YOUTUBE_TIME_OFFSET
+        - FRONTEND_MAX_LINES_IN_HISTORY
+        - FRONTEND_DEFAULT_VOSK_SAMPLE_RATE
+        - FRONTEND_RECORDING_INFORMATION_LINE
+        - FRONTEND_DEFAULT_AUDIO_FORMAT
+        - FRONTEND_SEND_TIMESTAMP
+        - FRONTEND_SEND_TIMESTAMP_COUNT
+        - FRONTEND_DEFAULT_TRANSLATION_TARGET_LANGUAGE
+    ports:
+        - '80:3000'
+    networks:
+      webcaptioner_ng_private:
+
+  webcaptioner-ng-back:
+    image: webcaptioner-ng-back:latest
+    restart: unless-stopped
+    environment:
+        - WEBCAPTIONER_BACKEND_PORT
+        - SOTRA_SERVER_CTRANSLATE_URL
+        - SOTRA_SERVER_FAIRSEQ_URL
+        - CONFIG
+        - MONGODB_USERNAME
+        - MONGODB_PASSWORD
+        - MONGODB_HOST
+        - MONGODB_DATABASE
+        - JWT_SECRET_KEY
+        - FREE_PASSWORD
+        - BAMBORAK_SERVER
+        - DB_ADMIN_FIRSTNAME
+        - DB_ADMIN_LASTNAME
+        - DB_ADMIN_EMAIL
+        - DB_ADMIN_PASSWORD
+    ports:
+        - '4000:4000'
+    networks:
+      webcaptioner_ng_private:
+
+  webcaptioner-ng-back-mongo:
+    image: mongo:8.0.4-noble
+#    ports:
+#        - '27017:27017'
+    restart: unless-stopped
+    environment:
+        - MONGO_INITDB_ROOT_USERNAME
+        - MONGO_INITDB_ROOT_PASSWORD
+    volumes:
+        - ./mongo:/data/db
+    networks:
+      webcaptioner_ng_private:
+    
+  webcaptioner-sotra-fairseq:
+    image: sotra-lsf:latest
+    volumes:
+     - ./models1/:/app/models1
+#    ports:
+#     - "3000:3000"
+    restart: unless-stopped
+    networks:
+      webcaptioner_ng_private:
+
+  webcaptioner-sotra-ctranslate:
+    image: ctranslator:latest
+    volumes:
+     - ./version.txt:/app/version.txt
+#    ports:
+#     - "25000:25000"
+    restart: unless-stopped
+    networks:
+      webcaptioner_ng_private:
+
+networks:
+  webcaptioner_ng_private:

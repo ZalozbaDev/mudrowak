@@ -30,15 +30,15 @@ RUN apt update && apt install -y cmake libboost-all-dev libre2-dev python3-pybin
 
 ```bash
 cd docker_vosk
-git checkout v2.0.0RC7
+git checkout d62a5ba2bde2199a7dc56eaf6d3844399daf15bc
 git clone https://github.com/ZalozbaDev/webrtc-audio-processing.git webrtc-audio-processing
-cd webrtc-audio-processing && git checkout 8f54329708f2d5eef477b76339d44d9a31583118
+cd webrtc-audio-processing && git checkout v2.1
 brew install meson abseil cmake 
 meson . build -Dprefix=$PWD/install && ninja -C build
 cd ..
 
 git clone https://github.com/ZalozbaDev/whisper.cpp.git whisper.cpp
-cd whisper.cpp && git checkout v1.7.4
+cd whisper.cpp && git checkout v1.8.6
 cmake -B build -DWHISPER_COREML=1 && cmake --build build -j --config Release
 cd ..
 

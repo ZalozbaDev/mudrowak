@@ -16,12 +16,15 @@ services:
         - FRONTEND_SEND_TIMESTAMP_COUNT
         - FRONTEND_DEFAULT_TRANSLATION_TARGET_LANGUAGE
     ports:
-        - '80:3000'
+        - '80:8080'
     networks:
       webcaptioner_ng_private:
 
   webcaptioner-ng-back:
     image: webcaptioner-ng-back:latest
+    depends_on:
+      webcaptioner-ng-back-mongo-init:
+        condition: service_completed_successfully
     restart: unless-stopped
     environment:
         - WEBCAPTIONER_BACKEND_PORT

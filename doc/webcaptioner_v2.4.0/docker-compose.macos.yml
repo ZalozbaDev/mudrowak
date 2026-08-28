@@ -41,6 +41,8 @@ services:
         - DB_ADMIN_PASSWORD
     ports:
         - '4000:4000'
+    volumes:
+        - ./config:/app/config
     networks:
       webcaptioner_ng_private:
 
@@ -52,8 +54,19 @@ services:
     environment:
         - MONGO_INITDB_ROOT_USERNAME
         - MONGO_INITDB_ROOT_PASSWORD
+    healthcheck:
+      test: ["CMD","mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
     volumes:
         - ./mongo:/data/db
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
       webcaptioner_ng_private:
     
@@ -67,6 +80,31 @@ services:
     networks:
       webcaptioner_ng_private:
 
+  webcaptioner-ng-back-mongo-init:
+    image: mongo:8.0.4-noble
+    depends_on:
+      webcaptioner-ng-back-mongo:
+        condition: service_healthy
+    restart: "no"
+    environment:
+      - MONGOSH_FORCE_DISABLE_TELEMETRY_FOR_TESTING=1
+    entrypoint: >
+      mongosh --host webcaptioner-ng-back-mongo -u huhuhallo -p jaabersicherdoch --authenticationDatabase admin --eval "
+        db = db.getSiblingDB('webcaptioner');
+        if (!db.getUser('webcaptioner_appuser')) {
+          db.createUser({
+            user: 'webcaptioner_appuser',
+            pwd: 'auch_das_noch',
+            roles: [{ role: 'readWrite', db: 'webcaptioner' }]
+          });
+          print('Created user webcaptioner_appuser');
+        } else {
+          print('User already exists');
+        }
+      "
+    networks:
+      webcaptioner_ng_private:
+    
   webcaptioner-sotra-ctranslate:
     image: ctranslator:latest
     volumes:

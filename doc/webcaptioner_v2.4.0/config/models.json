@@ -1,0 +1,9 @@
+[
+  {
+    "name": "hsb",
+    "description": "powšitkowny HSB",
+    "path": "/whisper/Korla/hsb-v1.ggml",
+    "transcriptLanguage": "hsb",
+    "voskUrl": "ws://host.docker.internal:2700"
+  }
+]

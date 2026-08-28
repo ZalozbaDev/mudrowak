@@ -48,7 +48,7 @@ cat README.md
 
 # dźěl spody "code" linku-po-lince wuwjesć, při tym pak prawy model wuzwolić, tule doporučeny model:
 
-docker run -e MODEL="Korla/whisper-large-v3-turbo-hsb-0" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
+docker run -e MODEL="Korla/whisper-large-v3-turbo-hsb-v1" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
 ```
 
 Za MacOS prošu sćěhowace přidatne kročele přewjesć, hlej [tule](./QUIRKS_MACOS.md#model-za-spóznawanje-twarić).
@@ -61,14 +61,14 @@ Za MacOS prošu sćěhowace přidatne kročele přewjesć, hlej [tule](./QUIRKS_
 
 ```bash
 cd webcaptioner-ng
-git checkout v2.0.0RC7
+git checkout 49ba6c1350b5495ccbeeb9e791eacc3eea1712f9
 cat README.md
 docker build -f docker/Dockerfile -t webcaptioner-ng .
 ```
 
 ```bash
 cd webcaptioner-ng-server
-git checkout v2.0.0RC7
+git checkout be889774397e25b33b7a5ee3ee9e7c4863f2f5c4
 cat README.md
 docker build -f docker/Dockerfile -t webcaptioner-ng-back .
 ```

@@ -32,27 +32,27 @@ https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1
 
 # model conversion
 
-|model name|language(s)|ggml support|coreml support|ct2 support|forcealign|lm fusion|
-|----------|-----------|------------|--------------|-----------|----------|---------|
-|Korla/hsb_stt_demo                                            |hsb|x| | | | |
-|Korla/whisper-large-hsb                                       |hsb|x| | | | |
-|danielzoba/whisper_small_adapted_2024_06_03                   |hsb|x| | | | |
-|DILHTWD/whisper-large-v3-hsb                                  |hsb|x| | | | |
-|zalozbadev/whisper_small_v3_2024_10                           |hsb|x| | | | |
-|Korla/whisper-large-v3-turbo-hsb                              |hsb|x|x| | | |
-|Korla/whisper-large-v3-turbo-hsb-0                            |hsb|x|x| | | |
-|DILHTWD/whisper-large-v3-turbo-hsb                            |hsb|x| | | | |
-|DigitalLabs42/whisper-medium-hsb-v1                           |hsb|x| | | | |
-|DigitalLabs42/whisper-large-hsb-v1                            |hsb|x| | | | |
-|DigitalLabs42/whisper-large-hsb-v1-version2 (separate branch) |hsb|x| | | | |
-|Korla/whisper-large-v3-turbo-dsb                              |dsb|x| | | | |
-|zalozbadev/whisper-large-v3-turbo-hsb                         |hsb|x| | | | |
-|zalozbadev/whisper-large-v3-turbo-hsb-aug                     |hsb|x| | | | |
-|zalozbadev/whisper-large-v3-turbo-hsb-aug-longest-trained     |hsb|x| | | | |
-|primeline/whisper-large-v3-german                             |de |x| | | | |
-|openai/whisper-large-v3-turbo                                 |multi|x| | | | |
-|openai/whisper-large-v3                                       |multi|x| | | | |
-|Korla/whisper-large-v3-turbo-hsb-v1                           |czech|x| | | | |
+|model name|language(s)|ggml support|coreml support|ct2 support|forcealign|lm fusion|quantization|
+|----------|-----------|------------|--------------|-----------|----------|---------|------------|
+|Korla/hsb_stt_demo                                            |hsb|x| | | | | |
+|Korla/whisper-large-hsb                                       |hsb|x| | | | | |
+|danielzoba/whisper_small_adapted_2024_06_03                   |hsb|x| | | | | |
+|DILHTWD/whisper-large-v3-hsb                                  |hsb|x| | | | | |
+|zalozbadev/whisper_small_v3_2024_10                           |hsb|x| | | | | |
+|Korla/whisper-large-v3-turbo-hsb                              |hsb|x|x| | | | |
+|Korla/whisper-large-v3-turbo-hsb-0                            |hsb|x|x| | | | |
+|DILHTWD/whisper-large-v3-turbo-hsb                            |hsb|x| | | | | |
+|DigitalLabs42/whisper-medium-hsb-v1                           |hsb|x| | | | | |
+|DigitalLabs42/whisper-large-hsb-v1                            |hsb|x| | | | | |
+|DigitalLabs42/whisper-large-hsb-v1-version2 (separate branch) |hsb|x| | | | | |
+|Korla/whisper-large-v3-turbo-dsb                              |dsb|x| | | | | |
+|zalozbadev/whisper-large-v3-turbo-hsb                         |hsb|x| | | | | |
+|zalozbadev/whisper-large-v3-turbo-hsb-aug                     |hsb|x| | | | | |
+|zalozbadev/whisper-large-v3-turbo-hsb-aug-longest-trained     |hsb|x| | | | | |
+|primeline/whisper-large-v3-german                             |de |x| | | | | |
+|openai/whisper-large-v3-turbo                                 |multi|x| | | | | |
+|openai/whisper-large-v3                                       |multi|x| | | | | |
+|Korla/whisper-large-v3-turbo-hsb-v1                           |czech|x| | | | |x|
 
 replace MODEL variable with "USERNAME/MODELNAME" 
 
@@ -64,5 +64,7 @@ mkdir ~/whisper_models/
 docker run -e MODEL="Korla/whisper-large-v3-turbo-hsb-0" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
 
 ```
+
+add e.g. '-e QUANTIZE="q5_1"' if you want an additional quantized version of the model.
 
 (for MacOS do not forget the special instructions for the "coreml/" folder!)

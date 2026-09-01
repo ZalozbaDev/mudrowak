@@ -4,6 +4,8 @@ export WHISPER_V1_7_1=whisper.cpp_v1_7_1
 export WHISPER_V1_7_2=whisper.cpp_v1_7_2
 export WHISPER_V1_7_4=whisper.cpp_v1_7_4
 
+export WHISPER_QUANTIZE=whisper.cpp_v1_9_2
+
 # could be that some conversions depend on OpenAI releases?
 export OPENAI_WHISPER_TAG_LATEST=v20240930
  
@@ -449,7 +451,16 @@ case $MODEL in
 		mkdir -p /output/Korla/whisper_large_v3_turbo_hsb-v1
 		cd $WHISPER_V1_7_4
 		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_large_v3_turbo_hsb-v1/ /cache/openai_whisper/ /output/Korla/whisper_large_v3_turbo_hsb-v1/
+		cd ..
+
+		## quantize if requested
+		if [[ $QUANTIZE ]]; then
+			cd $WHISPER_QUANTIZE 
+			./build/bin/whisper-quantize /output/Korla/whisper_large_v3_turbo_hsb-v1/ggml-model.bin /output/Korla/whisper_large_v3_turbo_hsb-v1/ggml-model-${QUANTIZE}.bin ${QUANTIZE}
+			cd ..
+		fi
 		;;
+
 	
 	Korla/whisper_test_translation)
 		if [ ! -e /cache/Korla_whisper_test_translation ]; then

@@ -54,3 +54,6 @@ webrtc-audio-processing/build/webrtc/common_audio/libcommon_audio.a \
 -ldl -lpthread -lhunspell-1.7 -licuio -licuuc -lsndfile -lonnxruntime -lresample -lwhisper -lggml -lggml-cpu -lggml-base -Lwhisper_out/ \
 -L/opt/homebrew/opt/hunspell/lib/ -L/opt/homebrew/opt/${BREW_ICU_VERSION}/lib/ -L/opt/homebrew/opt/libsndfile/lib/ -L/opt/homebrew/opt/libresample/lib \
 -L/opt/homebrew/Cellar/onnxruntime/${BREW_ONNX_VERSION}/lib
+
+install_name_tool -add_rpath $(pwd)/whisper_out $(pwd)/whisper_out/vosk_whisper_server
+

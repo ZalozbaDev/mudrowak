@@ -3,6 +3,13 @@
 ## Model za spóznawanje twarić
 
 * jenož modele, kiž w tabulce maja křižik pola "coreml", wužiwać!
+* jenoz za Apple M1: radso pridatnje kwantizowany model wutworic
+
+```bash
+docker run -e MODEL="Korla/whisper-large-v3-turbo-hsb-v1" -e QUANTIZE="q5_1" --mount type=bind,source=$HOME/cache,target=/cache/ --mount type=bind,source=$HOME/whisper_models,target=/output/ -it convert_to_ggml /convert.sh 
+```
+
+
 * potom sćěhowace skripty wuwjesć:
 
 ```bash
@@ -11,6 +18,12 @@ cd coreml/
 ./0005_install.sh
 ./0010_convert_coreml.sh
 cd ..
+```
+
+* jenoz za Apple M1: radso kwantizowany model wuziwac (njekwantizowany prepisac)
+
+```bash
+cp ~/whisper_models/Korla/whisper_large_v3_turbo_hsb-v1/ggml-model-q5_1.bin ~/whisper_models/Korla/whisper_large_v3_turbo_hsb-v1/coreml/ggml-large-v3-turbo.bin
 ```
 
 ## sotra

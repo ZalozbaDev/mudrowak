@@ -3,6 +3,7 @@
 export WHISPER_V1_7_1=whisper.cpp_v1_7_1
 export WHISPER_V1_7_2=whisper.cpp_v1_7_2
 export WHISPER_V1_7_4=whisper.cpp_v1_7_4
+export WHISPER_V1_9_2=whisper.cpp_v1_9_2
 
 export WHISPER_QUANTIZE=whisper.cpp_v1_9_2
 
@@ -462,9 +463,9 @@ case $MODEL in
 		;;
 
 	
-	Korla/whisper_test_translation)
-		if [ ! -e /cache/Korla_whisper_test_translation ]; then
-			git clone https://huggingface.co/Korla/whisper_test_translation /cache/Korla_whisper_test_translation
+	Korla/whisper-large-v3-turbo-hsb-translation-v1)
+		if [ ! -e /cache/Korla_whisper-large-v3-turbo-hsb-translation-v1 ]; then
+			git clone https://huggingface.co/Korla/whisper-large-v3-turbo-hsb-translation-v1 /cache/Korla_whisper-large-v3-turbo-hsb-translation-v1
 		fi
 		if [ ! -e /cache/openai_whisper ]; then
 			git clone https://github.com/openai/whisper                /cache/openai_whisper
@@ -474,9 +475,23 @@ case $MODEL in
 			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3-turbo      /cache/openai_whisper_large_v3_turbo
 		fi
 
-		mkdir -p /output/Korla/whisper_test_translation
+		mkdir -p /output/Korla/whisper-large-v3-turbo-hsb-translation-v1
 		cd $WHISPER_V1_7_2
-		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper_test_translation/ /cache/openai_whisper/ /output/Korla/whisper_test_translation/
+		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper-large-v3-turbo-hsb-translation-v1/ /cache/openai_whisper/ /output/Korla/whisper-large-v3-turbo-hsb-translation-v1/
+		;;
+	
+	Korla/whisper-large-v2-hsb-translate)
+		if [ ! -e /cache/Korla_whisper-large-v2-hsb-translate ]; then
+			git clone https://huggingface.co/Korla/whisper-large-v2-hsb-translate /cache/Korla_whisper-large-v2-hsb-translate
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+
+		mkdir -p /output/Korla/whisper-large-v2-hsb-translate
+		cd $WHISPER_V1_9_2
+		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper-large-v2-hsb-translate /cache/openai_whisper/ /output/Korla/whisper-large-v2-hsb-translate/
 		;;
 	
 	*)

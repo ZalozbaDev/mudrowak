@@ -52,7 +52,10 @@ https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1
 |primeline/whisper-large-v3-german                             |de |x| | | | | |
 |openai/whisper-large-v3-turbo                                 |multi|x| | | | | |
 |openai/whisper-large-v3                                       |multi|x| | | | | |
-|Korla/whisper-large-v3-turbo-hsb-v1                           |czech|x| | | | |x|
+|Korla/whisper-large-v3-turbo-hsb-v1                           |hsb|x| | | | |x|
+|Korla/whisper-large-v3-turbo-hsb-translation-v1               |hsb|x| | | | | |
+|Korla/whisper-large-v2-hsb-translate                          |hsb|x| | | | | |
+
 
 replace MODEL variable with "USERNAME/MODELNAME" 
 

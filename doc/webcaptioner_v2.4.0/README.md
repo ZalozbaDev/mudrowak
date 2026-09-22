@@ -99,11 +99,9 @@ Za MacOS prošu hinašu wariantu za instalaciju wužiwać: [vosk](./QUIRKS_MACOS
 
 ```bash
 cd docker_vosk
-git checkout v2.0.0RC7
-sudo apt install -y nvidia-cuda-toolkit gcc g++
-./detect_whisper_options.sh
+git checkout v2.5.1
 head vosk_server_whisper/Dockerfile 
-docker build ...
+docker build -f vosk_server_whisper/Dockerfile --progress=plain -t vosk_server_whisper . 
 ```
 
 Je-li waša grafikowa karta pře nowa, so architektura hišće njepodpěra. Zapisajće potom pola "NVIDIA_CUDA_ARCHITECTURE" mjeńšu ličbu (na přikład "90" by dyrbjało přeco hić).
@@ -121,9 +119,8 @@ git clone https://huggingface.co/Thorsten-Voice/VITS
 cd bamborak
 git checkout 9a40ddbb911c943bcf05e5209602f451da87897f
 git checkout 0c8a2163e9f8929259482e1736e3916bf843aba6 -- backend/config.json
-./detect_accel_options.sh
 cd backend
-docker build -f Dockerfile.py312.cuda ...
+docker build -f Dockerfile.py312.cuda --progress=plain -t bamborak_backend_cuda_minimal . 
 ```
 
 ## system startować

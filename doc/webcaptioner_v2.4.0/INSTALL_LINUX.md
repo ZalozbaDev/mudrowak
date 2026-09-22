@@ -39,6 +39,7 @@ sudo adduser lucija docker
 
 https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
 
+Wšitke kročele wobkedźbować!
 
 Opcionelnje wobstarajće sebi "Visual Studio Code" za Linux.
 

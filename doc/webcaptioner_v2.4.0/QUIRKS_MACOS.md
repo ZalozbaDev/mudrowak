@@ -104,28 +104,6 @@ brew install python@3.13 sox
 
 ### skripty přihotować za komfortabelny start słužbow
 
-Wobstaramy sebi dataje za prawopisnu kontrolu spóznawanskeho wuslědka:
-* https://soblex.de/download/download.html
-* Prawopisny modul za LibreOffice sćahnyć
-
-```bash
-cd ~/Downloads/
-cp soblex_hsb_*.oxt soblex_hsb.zip
-unzip soblex_hsb.zip
-mkdir -p ~/soblex/
-cp hsb_DE_soblex*.aff ~/soblex/hsb_DE_soblex.aff
-cp hsb_DE_soblex*.dic ~/soblex/hsb_DE_soblex.dic
-```
-
-* Model za "VAD" skladowac:
-
-```bash
-git clone https://github.com/ZalozbaDev/silero-vad.git
-mkdir -p docker_vosk/model/
-cp silero-vad/src/silero_vad/data/silero_vad.onnx docker_vosk/model/silero_vad_v6_2.onnx
-```
-
-
 Dokelž spóznawanja a předčitanje na Mac OS separatnje běžeć dyrbi, wutworimy sebi skripty, kiž so z kliknjenjom na symbol wuwjesć daja.
 
 ```bash

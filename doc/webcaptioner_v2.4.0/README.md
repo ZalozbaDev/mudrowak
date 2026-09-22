@@ -120,15 +120,41 @@ cd bamborak
 git checkout 9a40ddbb911c943bcf05e5209602f451da87897f
 git checkout 0c8a2163e9f8929259482e1736e3916bf843aba6 -- backend/config.json
 cd backend
-docker build -f Dockerfile.py312.cuda --progress=plain -t bamborak_backend_cuda_minimal . 
+docker build -f Dockerfile.py312.curuntime12_6 --progress=plain -t bamborak_backend_cuda_minimal . 
 ```
 
 ## system startować
 
+### prawopisna kontrola
+
+Wobstaramy sebi dataje za prawopisnu kontrolu spóznawanskeho wuslědka:
+* https://soblex.de/download/download.html
+* Prawopisny modul za LibreOffice sćahnyć
+
+```bash
+cd ~/Downloads/
+cp soblex_hsb_*.oxt soblex_hsb.zip
+unzip soblex_hsb.zip
+mkdir -p ~/soblex/
+cp hsb_DE_soblex*.aff ~/soblex/hsb_DE_soblex.aff
+cp hsb_DE_soblex*.dic ~/soblex/hsb_DE_soblex.dic
+```
+
+### Silero VAD model
+
+* Model za "VAD" skladowac:
+
+```bash
+git clone https://github.com/ZalozbaDev/silero-vad.git
+mkdir -p docker_vosk/model/
+cp silero-vad/src/silero_vad/data/silero_vad.onnx docker_vosk/model/silero_vad_v6_2.onnx
+```
+
+
 MacOS system dyrbi so hinak startować: [Mac OS start](./QUIRKS_MACOS.md#system-startować).
 
 ```bash
-cd mudrowak/doc/webcaptioner_v2.0.0
+cd mudrowak/doc/webcaptioner_v2.4.0
 cp env.example .env
 cp -r ../../../modele/sotra-lsf-ds/Docker/models1 .
 cp ../../../modele/ctranslate-ol/version.txt .
@@ -139,6 +165,10 @@ mkdir -p logs/
 mkdir -p tts-modele/
 cp ../../../VITS/config.json     tts-modele/thorsten.json
 cp ../../../VITS/model_file.pth  tts-modele/thorsten.pth
+mkdir -p mongo/
+mkdir -p model/
+cp ../../../docker_vosk/model/* model/
+cp ../../../soblex/* model/
 sudo apt install -y python3-distutils-extra
 docker-compose up -d
 ```

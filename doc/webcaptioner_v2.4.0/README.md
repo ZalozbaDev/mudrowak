@@ -100,6 +100,9 @@ Za MacOS prošu hinašu wariantu za instalaciju wužiwać: [vosk](./QUIRKS_MACOS
 ```bash
 cd docker_vosk
 git checkout v2.5.1
+# TBD need to find out why CUDA 13.1 does not work on some devices
+# use this branch instead if you have problems
+# git checkout fix__lower_cuda_version_for_unknown_reason
 head vosk_server_whisper/Dockerfile 
 docker build -f vosk_server_whisper/Dockerfile --progress=plain -t vosk_server_whisper . 
 ```
@@ -117,8 +120,10 @@ git clone https://github.com/ZalozbaDev/bamborak
 git lfs install
 git clone https://huggingface.co/Thorsten-Voice/VITS
 cd bamborak
-git checkout 9a40ddbb911c943bcf05e5209602f451da87897f
-git checkout 0c8a2163e9f8929259482e1736e3916bf843aba6 -- backend/config.json
+# git checkout 9a40ddbb911c943bcf05e5209602f451da87897f
+# git checkout 0c8a2163e9f8929259482e1736e3916bf843aba6 -- backend/config.json
+# this snapshot is for running with cudaruntime and reduced config, but on a very old state
+git checkout 465d3aee0ee195b62d59f0249adbb627f00239f1
 cd backend
 docker build -f Dockerfile.py312.curuntime12_6 --progress=plain -t bamborak_backend_cuda_minimal . 
 ```

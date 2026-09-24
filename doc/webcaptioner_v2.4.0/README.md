@@ -123,7 +123,7 @@ cd bamborak
 # git checkout 9a40ddbb911c943bcf05e5209602f451da87897f
 # git checkout 0c8a2163e9f8929259482e1736e3916bf843aba6 -- backend/config.json
 # this snapshot is for running with cudaruntime and reduced config, but on a very old state
-git checkout 465d3aee0ee195b62d59f0249adbb627f00239f1
+git checkout 28f238f940c2b6d52fc3c31f265617ac39cbd788
 cd backend
 docker build -f Dockerfile.py312.curuntime12_6 --progress=plain -t bamborak_backend_cuda_minimal . 
 ```

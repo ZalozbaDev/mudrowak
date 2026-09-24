@@ -160,7 +160,7 @@ services:
       webcaptioner_ng_private:
 
   bamborak-backend:
-    image: bamborak_backend_cuda:latest
+    image: bamborak_backend_cuda_minimal:latest
 #    privileged: true
     restart: unless-stopped
     runtime: nvidia

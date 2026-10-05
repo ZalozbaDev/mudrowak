@@ -55,6 +55,7 @@ https://huggingface.co/DigitalLabs42/whisper-large-hsb-v1
 |Korla/whisper-large-v3-turbo-hsb-v1                           |hsb|x| | | | |x|
 |Korla/whisper-large-v3-turbo-hsb-translation-v1               |hsb|x| | | | | |
 |Korla/whisper-large-v2-hsb-translate                          |hsb|x| | | | | |
+|zalozbadev/whisper-large-v3-turbo-hsb-aug-v2                  |hsb|x| | | | | |
 
 
 replace MODEL variable with "USERNAME/MODELNAME" 

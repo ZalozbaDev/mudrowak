@@ -494,6 +494,33 @@ case $MODEL in
 		python3 ./models/convert-h5-to-ggml.py /cache/Korla_whisper-large-v2-hsb-translate /cache/openai_whisper/ /output/Korla/whisper-large-v2-hsb-translate/
 		;;
 	
+	zalozbadev/whisper-large-v3-turbo-hsb-aug-v2)
+		if [ ! -e /cache/zalozbadev_whisper_large_v3_turbo_hsb_aug_v2 ]; then
+			git clone https://huggingface.co/zalozbadev/whisper-large-v3-turbo-hsb-aug-v2 /cache/zalozbadev_whisper_large_v3_turbo_hsb_aug_v2
+		fi
+		if [ ! -e /cache/openai_whisper ]; then
+			git clone https://github.com/openai/whisper                /cache/openai_whisper
+		fi
+		pushd /cache/openai_whisper && git checkout $OPENAI_WHISPER_TAG_LATEST && popd
+		if [ ! -e /cache/openai_whisper_large_v3_turbo ]; then
+			GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/openai/whisper-large-v3-turbo      /cache/openai_whisper_large_v3_turbo
+		fi
+
+		#cp /cache/openai_whisper_large_v3_turbo/vocab.json        /cache/Korla_whisper_large_v3_turbo_hsb/
+		#cp /cache/openai_whisper_large_v3_turbo/added_tokens.json /cache/Korla_whisper_large_v3_turbo_hsb/
+		
+		# not necessary for this python script, but required when creating ct2 model
+		#cp /cache/openai_whisper_large_v3_turbo/merges.txt               /cache/Korla_whisper_large_v3_turbo_hsb/
+		#cp /cache/openai_whisper_large_v3_turbo/tokenizer.json           /cache/Korla_whisper_large_v3_turbo_hsb/
+		#cp /cache/openai_whisper_large_v3_turbo/preprocessor_config.json /cache/Korla_whisper_large_v3_turbo_hsb/
+		
+        ## GGML ##
+
+		mkdir -p /output/zalozbadev/whisper_large_v3_turbo_hsb_aug_v2
+		cd $WHISPER_V1_7_4
+		python3 ./models/convert-h5-to-ggml.py /cache/zalozbadev_whisper_large_v3_turbo_hsb_aug_v2/ /cache/openai_whisper/ /output/zalozbadev/whisper_large_v3_turbo_hsb_aug_v2/
+		;;
+	
 	*)
 		echo "Model $MODEL unknown!"
 		;;

@@ -64,7 +64,7 @@ services:
       retries: 3
       start_period: 30s
     volumes:
-        - ./mongo:/data/db
+        - mongo_db_datadir:/data/db
     logging:
       driver: "json-file"
       options:
@@ -120,3 +120,6 @@ services:
 
 networks:
   webcaptioner_ng_private:
+
+volumes:
+  mongo_db_datadir:

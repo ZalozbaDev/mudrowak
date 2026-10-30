@@ -519,6 +519,14 @@ case $MODEL in
 		mkdir -p /output/zalozbadev/whisper_large_v3_turbo_hsb_aug_v2
 		cd $WHISPER_V1_7_4
 		python3 ./models/convert-h5-to-ggml.py /cache/zalozbadev_whisper_large_v3_turbo_hsb_aug_v2/ /cache/openai_whisper/ /output/zalozbadev/whisper_large_v3_turbo_hsb_aug_v2/
+		cd ..
+		
+		## quantize if requested
+		if [[ $QUANTIZE ]]; then
+			cd $WHISPER_QUANTIZE 
+			./build/bin/whisper-quantize /output/zalozbadev/whisper_large_v3_turbo_hsb_aug_v2/ggml-model.bin /output/zalozbadev/whisper_large_v3_turbo_hsb_aug_v2/ggml-model-${QUANTIZE}.bin ${QUANTIZE}
+			cd ..
+		fi
 		;;
 	
 	*)

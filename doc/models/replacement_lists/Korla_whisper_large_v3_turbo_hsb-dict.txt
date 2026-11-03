@@ -9,10 +9,10 @@ pjeć	5	0
 sydom	2	0
 wosom	2	0
 dźejweć	2	0
-prašak  ?   0
-wuwołak !   0
-dypk    .   0
-koma    ,   0
-smužka  -   0
-plus    +   0
-minus   -   0
+prašak	?	0
+wuwołak	!	0
+dypk	.	0
+koma	,	0
+smužka	-	0
+plus	+	0
+minus	-	0

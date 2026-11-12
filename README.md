@@ -206,6 +206,7 @@ prosodyctl --config /run/prosody/config/prosody.cfg.lua register WUŽIWARSKE_MJE
 wužiwarjo pokazać a wumazać:
 
 ```bash
-find /config/data/meet%2ejitsi/ -type f -exec basename {} .dat \;
+# find /config/data/meet%2ejitsi/ -type f -exec basename {} .dat \;
+ls -la /var/lib/prosody/meet%2ejitsi/accounts/
 prosodyctl --config /run/prosody/config/prosody.cfg.lua unregister WUŽIWARSKE_MJENO meet.jitsi
 ```
